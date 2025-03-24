@@ -1,0 +1,202 @@
+:root {
+    --primary-gradient: linear-gradient(45deg, #3375FF, #33BDFF);
+    --secondary-gradient: linear-gradient(45deg, #1A5276, #154360);
+    --light-color: #F8F9FA;
+    --dark-color: #2C3E50;
+    --text-primary: #154360;
+    --white: #FFFFFF;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --hover-shadow-color: rgba(0, 0, 0, 0.3);
+    --card-padding: 24px;
+    --card-radius: 18px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    color: var(--text-color);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('Back.png') no-repeat center center fixed;
+    background-size: cover;
+    --text-color: #131313;
+    --background-color: #f0f0f0;
+}
+
+h1 {
+    color: rgb(200, 201, 237);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+h2 {
+    color: rgb(21, 20, 20);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Card Container Styling */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px 10px;
+    justify-content: center;
+}
+
+.col-md-4 {
+    flex: 1 1 calc(33.333% - 30px);
+    max-width: calc(33.333% - 30px);
+    margin-bottom: 30px;
+    perspective: 1000px;
+}
+
+/* Card Enhanced Styling */
+.card {
+    border: none;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-15px) rotateX(5deg);
+    box-shadow: 0 20px 40px rgba(51, 117, 255, 0.25);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-gradient);
+}
+
+.card img {
+    height: 280px;
+    object-fit: cover;
+    width: 65%;
+    transition: all 0.5s ease;
+    border-bottom: none;
+}
+
+.card-body {
+    padding: var(--card-padding);
+    background: var(--white);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--secondary-gradient);
+    transition: width 0.3s ease;
+}
+
+.card:hover .card-title::after {
+    width: 100px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.card-body p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.card-body strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Card Hover Effects */
+.card:hover .card-title {
+    color: transparent;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.card:hover img {
+    filter: saturate(1.2) contrast(1.1);
+    transform: scale(1.03);
+}
+
+/* Special hover effect for the image background - kept as requested */
+.card:hover img {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url('Flaghover.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Responsive Design Enhancement */
+@media screen and (max-width: 992px) {
+    .col-md-4 {
+        flex: 1 1 calc(50% - 30px);
+        max-width: calc(50% - 30px);
+    }
+    
+    .card img {
+        height: 240px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        gap: 20px;
+    }
+    
+    .col-md-4 {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .col-md-4 {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    
+    .card img {
+        height: 220px;
+    }
+    
+    .card-body {
+        padding: 20px;
+    }
+}

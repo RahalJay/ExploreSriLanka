@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Sri Lanka - Login</title>
+  <link rel="stylesheet" href="Login.css">
+  <style>
+    /* Additional styles for error messages and success indicators */
+    .error-message {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .form-group.error input {
+      border-color: #e74c3c;
+    }
+    
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main>
+      <div class="login-form">
+        <h2>Login</h2>
+        <div id="login-alert" class="error-message"></div>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="userType">Login As</label>
+            <select id="userType" class="form-control">
+              <option value="user">Regular User</option>
+              <option value="admin">Administrator</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username">
+            <div class="error-message" id="username-error">Please enter your username</div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <div class="error-message" id="password-error">Please enter your password</div>
+          </div>
+          <div class="form-group forgot-password">
+            <a href="Registration.html">Forgot Password?</a>
+          </div>
+          <div class="form-buttons">
+            <button type="button" class="btn btn-cancel" id="cancel-button">Cancel</button>
+            <button type="button" class="btn" id="login-button">Login</button>
+          </div>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="Registration.html">Sign up</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get form elements
+      const loginForm = document.getElementById('loginForm');
+      const userTypeSelect = document.getElementById('userType');
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const loginAlert = document.getElementById('login-alert');
+      const usernameError = document.getElementById('username-error');
+      const passwordError = document.getElementById('password-error');
+      const loginButton = document.getElementById('login-button');
+      const cancelButton = document.getElementById('cancel-button');
+      
+      // Sample credentials for demonstration
+      const validCredentials = {
+        user: { username: 'user', password: 'user123' },
+        admin: { username: 'admin', password: 'admin123' }
+      };
+      
+      // Change form behavior based on selected user type
+      userTypeSelect.addEventListener('change', function() {
+        const isAdmin = this.value === 'admin';
+        const signupLink = document.querySelector('.signup-link');
+        
+        // Hide signup link for admin login
+        signupLink.style.display = isAdmin ? 'none' : 'block';
+        
+        // Clear any existing errors when switching user types
+        resetErrors();
+      });
+      
+      // Clear individual field errors on input
+      usernameInput.addEventListener('input', function() {
+        usernameInput.parentElement.classList.remove('error');
+        usernameError.style.display = 'none';
+        loginAlert.style.display = 'none';
+      });
+      
+      passwordInput.addEventListener('input', function() {
+        passwordInput.parentElement.classList.remove('error');
+        passwordError.style.display = 'none';
+        loginAlert.style.display = 'none';
+      });
+      
+      // IMPORTANT: Using click handler on button instead of form submit
+      // This is the key fix to prevent the form from disappearing
+      loginButton.addEventListener('click', function(e) {
+        // Prevent any default behavior
+        e.preventDefault();
+        
+        // Reset previous errors
+        resetErrors();
+        
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+        const userType = userTypeSelect.value;
+        
+        // Validate form fields
+        let isValid = true;
+        
+        if (!username) {
+          usernameInput.parentElement.classList.add('error');
+          usernameError.style.display = 'block';
+          isValid = false;
+        }
+        
+        if (!password) {
+          passwordInput.parentElement.classList.add('error');
+          passwordError.style.display = 'block';
+          isValid = false;
+        }
+        
+        if (!isValid) {
+          return;
+        }
+        
+        // Show loading state
+        const originalButtonText = loginButton.innerHTML;
+        loginButton.innerHTML = '<span class="loading"></span> Logging in...';
+        loginButton.disabled = true;
+        
+        // Simulate server request with setTimeout
+        setTimeout(() => {
+          let isAuthenticated = false;
+          
+          // Check credentials against our sample data
+          if (userType === 'admin') {
+            isAuthenticated = (username === validCredentials.admin.username && 
+                              password === validCredentials.admin.password);
+          } else {
+            isAuthenticated = (username === validCredentials.user.username && 
+                              password === validCredentials.user.password);
+          }
+          
+          if (isAuthenticated) {
+            // Successful login
+            loginAlert.textContent = "Login successful! Redirecting...";
+            loginAlert.style.display = 'block';
+            loginAlert.style.color = '#2ecc71';
+            
+            // Redirect after showing success message
+            setTimeout(() => {
+              if (userType === 'admin') {
+                window.location.href = 'admin2.html';
+              } else {
+                // Changed the redirection for regular users to Home.html
+                window.location.href = 'Home.html';
+              }
+            }, 1000);
+          } else {
+            // Failed login
+            loginButton.innerHTML = originalButtonText;
+            loginButton.disabled = false;
+            loginAlert.textContent = "Invalid username or password. Please try again.";
+            loginAlert.style.display = 'block';
+          }
+        }, 1500); // Simulate server delay
+      });
+      
+      // Handle cancel button
+      cancelButton.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent any default behavior
+        window.location.href = 'Home.html';
+      });
+      
+      // Prevent form submission which could cause page reload
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      // Helper function to reset error states
+      function resetErrors() {
+        usernameInput.parentElement.classList.remove('error');
+        passwordInput.parentElement.classList.remove('error');
+        usernameError.style.display = 'none';
+        passwordError.style.display = 'none';
+        loginAlert.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

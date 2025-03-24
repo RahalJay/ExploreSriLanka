@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka Districts Map</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Home.css">
+    <link rel="stylesheet" href="Map.css">
+</head>
+<body>
+    <div class="website-container" id="main-container">
+        <header class="sticky-top" id="header-section">
+            <!-- Gradient background with Sri Lankan flag colors -->
+            <div class="header-bg-gradient"></div>
+            
+            <nav class="navbar navbar-expand-lg navbar-light container py-3" id="main-nav">
+                <div class="container-fluid" id="nav-container">
+                    <!-- Enhanced logo container -->
+                    <a class="navbar-brand d-flex align-items-center" href="#" id="brand-link">
+                        <img src="Logo.png" alt="Sri Lanka Tourism Logo" class="logo-img" id="logo-image">
+                        <span class="brand-text ms-2">Explore <span class="text-primary">Sri Lanka</span></span>
+                    </a>
+                    
+                    <!-- Improved mobile toggle -->
+                    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" id="nav-toggler">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <!-- Main navigation -->
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto align-items-center" id="nav-links">
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Home.html" id="nav-home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Map.html" id="nav-map">Map</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="cal.html" id="nav-calendar">Events</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Guide.html" id="nav-guide">Road Signs</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Recipes.html" id="nav-recipes">Recipes</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Tips.html" id="nav-tips">Guidelines</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Decorative wave element -->
+            <div class="header-wave"></div>
+        </header>
+        
+        <!-- Add these styles to your CSS file -->
+        <style>
+            /* Header background with Sri Lankan flag colors */
+            .header-bg-gradient {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(to right, #FF0000 33%, #FFCC00 33%, #FFCC00 66%, #009900 66%);
+            }
+            
+            /* Enhance the overall header */
+            #header-section {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+            }
+            
+            /* Logo styling */
+            .logo-img {
+                height: 75px;
+                transition: all 0.3s ease;
+            }
+            
+            /* Brand text styling */
+            .brand-text {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #333;
+                display: inline-block;
+            }
+            
+            /* Navigation link styling */
+            .nav-link {
+                position: relative;
+                transition: all 0.3s ease;
+                color: #444 !important;
+            }
+            
+            .nav-link:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 50%;
+                background-color: #0d6efd;
+                transition: all 0.3s ease;
+                transform: translateX(-50%);
+            }
+            
+            .nav-link:hover {
+                color: #0d6efd !important;
+            }
+            
+            .nav-link:hover:after {
+                width: 70%;
+            }
+            
+            /* Active link styling */
+            .nav-link.active {
+                color: #0d6efd !important;
+                font-weight: 600;
+            }
+            
+            .nav-link.active:after {
+                width: 70%;
+            }
+            
+            /* Login button enhancement */
+            #register-btn {
+                transition: all 0.3s ease;
+                border: none;
+                font-weight: 600;
+                background: linear-gradient(135deg, #0d6efd, #0a58ca);
+                color: white; /* Makes the text color white */
+            }
+
+            #register-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+                color: white; /* Ensures text stays white on hover too */
+            }
+            
+            /* Decorative wave at the bottom */
+            .header-wave {
+                height: 5px;
+                background: linear-gradient(45deg, #0d6efd, #0a58ca, #0d6efd);
+                opacity: 0.7;
+            }
+            
+            /* Scroll effect - add this with JavaScript */
+            .header-scrolled {
+                padding: 5px 0;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            /* Add Font Awesome if not already included */
+            @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        </style>
+        
+        <!-- Add this JavaScript for scroll effect -->
+        <script>
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header-section');
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        </script>
+        </header>
+
+        <main>
+            <!-- Map Section -->
+            <section id="map" class="py-5">
+                <div class="container">
+                    <h1 class="text-center mb-4">Explore Sri Lanka</h1>
+                    <div class="row">
+                        <div class="col-lg-10 offset-lg-1">
+                            <div id="sri-lanka-map" class="map-container shadow-sm rounded">
+                                <center><img src="SLMap.png" alt="Sri Lanka Map" class="img-fluid"></center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tourism" class="bg-light py-5">
+                <div class="container">
+                    <h2 class="text-center mb-4">Sri Lankan attraction places, Wildlife & Adventures by Districts</h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="Jaffna.png" class="card-img-top" alt="Jaffna District" id="district-jaffna-img">
+                                <div class="card-body">
+                                    <h3 class="card-title" id="district-jaffna-title">Jaffna District</h3>
+                                    <p class="card-text" id="district-jaffna-description">
+                                        <strong>Attractions:</strong> Jaffna Fort, Nallur Kandaswamy Temple, Keerimalai Springs<br>
+                                        <strong>Wildlife:</strong> Jaffna Lagoon Bird Sanctuary<br>
+                                        <strong>Adventure Activities:</strong> Cycling tours, Boat trips to Delft Island
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="Kilinochchi.png" class="card-img-top" alt="Kilinochchi District" id="district-kilinochchi-img">
+                                <div class="card-body">
+                                    <h3 class="card-title" id="district-kilinochchi-title">Kilinochchi District</h3>
+                                    <p class="card-text" id="district-kilinochchi-description">
+                                        <strong>Attractions:</strong> War Memorial, Elephant Pass, Mullaitivu Beaches<br>
+                                        <strong>Wildlife:</strong> Wilpattu National Park border<br>
+                                        <strong>Adventure Activities:</strong> Historical site tours, Bird watching
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="Mannar.png" class="card-img-top" alt="Mannar District" id="district-mannar-img">
+                                <div class="card-body">
+                                    <h3 class="card-title" id="district-mannar-title">Mannar District</h3>
+                                    <p class="card-text" id="district-mannar-description">
+                                        <strong>Attractions:</strong> Mannar Fort, Adam's Bridge, Thiruketheeswaram Temple<br>
+                                        <strong>Wildlife:</strong> Mannar Bird Sanctuary, Donkey Sanctuary<br>
+                                        <strong>Adventure Activities:</strong> Bird watching, Fishing, Cultural tours
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="Vavuniya.png" class="card-img-top" alt="Vavuniya District" id="district-vavuniya-img">
+                                <div class="card-body">
+                                    <h3 class="card-title" id="district-vavuniya-title">Vavuniya District</h3>
+                                    <p class="card-text" id="district-vavuniya-description">
+                                        <strong>Attractions:</strong> Madhu Church, Ancient Buddhist Sites<br>
+                                        <strong>Wildlife:</strong> Wilpattu National Park<br>
+                                        <strong>Adventure Activities:</strong> Archaeological tours, Nature walks
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="Mullaitivu.png" class="card-img-top" alt="Mullaitivu District" id="district-mullaitivu-img">
+                                <div class="card-body">
+                                    <h3 class="card-title" id="district-mullaitivu-title">Mullaitivu District</h3>
+                                    <p class="card-text" id="district-mullaitivu-description">
+                                        <strong>Attractions:</strong> War Memorial, Nandikadal Lagoon<br>
+                                        <strong>Wildlife:</strong> Coastal Marine Ecosystems<br>
+                                        <strong>Adventure Activities:</strong> Historical site tours, Coastal exploration
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="Trincomalee.png" class="card-img-top" alt="Trincomalee District" id="district-trincomalee-img">
+                                <div class="card-body">
+                                    <h3 class="card-title" id="district-trincomalee-title">Trincomalee District</h3>
+                                    <p class="card-text" id="district-trincomalee-description">
+                                        <strong>Attractions:</strong> Koneswaram Temple, Hot Wells, Fort Frederick<br>
+                                        <strong>Wildlife:</strong> Pigeon Island National Park<br>
+                                        <strong>Adventure Activities:</strong> Whale watching, Diving, Snorkeling
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="Batticaloa.png" class="card-img-top" alt="Batticaloa District" id="district-batticaloa-img">
+                                <div class="card-body">
+                                    <h3 class="card-title" id="district-batticaloa-title">Batticaloa District</h3>
+                                    <p class="card-text" id="district-batticaloa-description">
+                                        <strong>Attractions:</strong> Batticaloa Lighthouse, Dutch Fort<br>
+                                        <strong>Wildlife:</strong> Maduru Oya National Park<br>
+                                        <strong>Adventure Activities:</strong> Lagoon kayaking, Cultural tours
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Ampara.png" class="card-img-top" alt="Ampara District" id="district-ampara-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-ampara-title">Ampara District</h3>
+            <p class="card-text" id="district-ampara-description">
+                <strong>Attractions:</strong> Arugam Bay, Lahugala National Park<br>
+                <strong>Wildlife:</strong> Kumana National Park<br>
+                <strong>Adventure Activities:</strong> Surfing, Safari tours
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Polonnaruwa.png" class="card-img-top" alt="Polonnaruwa District" id="district-polonnaruwa-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-polonnaruwa-title">Polonnaruwa District</h3>
+            <p class="card-text" id="district-polonnaruwa-description">
+                <strong>Attractions:</strong> Ancient City, Gal Vihara, Royal Palace<br>
+                <strong>Wildlife:</strong> Minneriya National Park<br>
+                <strong>Adventure Activities:</strong> Historical tours, Bicycle exploration
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Anuradhapura.png" class="card-img-top" alt="Anuradhapura District" id="district-anuradhapura-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-anuradhapura-title">Anuradhapura District</h3>
+            <p class="card-text" id="district-anuradhapura-description">
+                <strong>Attractions:</strong> Sacred City, Sri Maha Bodhi Tree, Ruwanwelisaya Stupa<br>
+                <strong>Wildlife:</strong> Wilpattu National Park<br>
+                <strong>Adventure Activities:</strong> Archaeological tours, Cultural exploration
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Repeat this pattern for the remaining districts -->
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Matale.png" class="card-img-top" alt="Matale District" id="district-matale-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-matale-title">Matale District</h3>
+            <p class="card-text" id="district-matale-description">
+                <strong>Attractions:</strong> Dambulla Cave Temple, Sigiriya Rock Fortress<br>
+                <strong>Wildlife:</strong> Knuckles Mountain Forest Reserve<br>
+                <strong>Adventure Activities:</strong> Hiking, Rock climbing, Spice garden tours
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Kandy.png" class="card-img-top" alt="Kandy District" id="district-kandy-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-kandy-title">Kandy District</h3>
+            <p class="card-text" id="district-kandy-description">
+                <strong>Attractions:</strong> Temple of the Tooth, Royal Botanical Gardens<br>
+                <strong>Wildlife:</strong> Udawattakele Sanctuary<br>
+                <strong>Adventure Activities:</strong> Cultural shows, Tea plantation tours
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="NuwaraEliya.png" class="card-img-top" alt="Nuwara Eliya District" id="district-nuwara-eliya-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-nuwara-eliya-title">Nuwara Eliya District</h3>
+            <p class="card-text" id="district-nuwara-eliya-description">
+                <strong>Attractions:</strong> Gregory Lake, Tea Plantations, Horton Plains<br>
+                <strong>Wildlife:</strong> Horton Plains National Park<br>
+                <strong>Adventure Activities:</strong> Hiking, Mountain biking, Trout fishing
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Ratnapura.png" class="card-img-top" alt="Ratnapura District" id="district-ratnapura-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-ratnapura-title">Ratnapura District</h3>
+            <p class="card-text" id="district-ratnapura-description">
+                <strong>Attractions:</strong> Gem Mines, Adam's Peak, Sinharaja Forest Reserve<br>
+                <strong>Wildlife:</strong> Sinharaja Rainforest<br>
+                <strong>Adventure Activities:</strong> Gem mining tours, Waterfall expeditions
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Kegalle.png" class="card-img-top" alt="Kagalle District" id="district-kegalle-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-kegalle-title">Kagalle District</h3>
+            <p class="card-text" id="district-kegalle-description">
+                <strong>Attractions:</strong> Dambulla Cave Temple, Pinnawala Elephant Orphanage, Rock Forest Temple<br>
+                <strong>Wildlife:</strong> Wasgamuwa National Park, Kaluganga<br>
+                <strong>Adventure Activities:</strong> Hiking, Elephant Watching, River Rafting
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Galle.png" class="card-img-top" alt="Galle District" id="district-galle-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-galle-title">Galle District</h3>
+            <p class="card-text" id="district-galle-description">
+                <strong>Attractions:</strong> Galle Fort, Unawatuna Beach, Maritime Museum<br>
+                <strong>Wildlife:</strong> Kanneliya Forest Reserve<br>
+                <strong>Adventure Activities:</strong> Surfing, Snorkeling, Historical tours
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Matara.png" class="card-img-top" alt="Matara District" id="district-matara-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-matara-title">Matara District</h3>
+            <p class="card-text" id="district-matara-description">
+                <strong>Attractions:</strong> Polhena Beach, Tsunami Memorial, Dondra Lighthouse<br>
+                <strong>Wildlife:</strong> Coastal marine ecosystems<br>
+                <strong>Adventure Activities:</strong> Whale watching, Diving, Beach sports
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Hambantota.png" class="card-img-top" alt="Hambantota District" id="district-hambantota-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-hambantota-title">Hambantota District</h3>
+            <p class="card-text" id="district-hambantota-description">
+                <strong>Attractions:</strong> Bundala National Park, Hambantota Salt Pans<br>
+                <strong>Wildlife:</strong> Yala National Park<br>
+                <strong>Adventure Activities:</strong> Safari tours, Bird watching
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Gampaha.png" class="card-img-top" alt="Gampaha District" id="district-gampaha-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-gampaha-title">Gampaha District</h3>
+            <p class="card-text" id="district-gampaha-description">
+                <strong>Attractions:</strong> Pinnawala Elephant Orphanage, Mrigasthanam Temple<br>
+                <strong>Wildlife:</strong> Muthurajawela Marsh<br>
+                <strong>Adventure Activities:</strong> Elephant encounters, Nature walks
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Colombo.png" class="card-img-top" alt="Colombo District" id="district-colombo-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-colombo-title">Colombo District</h3>
+            <p class="card-text" id="district-colombo-description">
+                <strong>Attractions:</strong> National Museum, Gangaramaya Temple, Beira Lake<br>
+                <strong>Wildlife:</strong> Attidiya Bird Sanctuary<br>
+                <strong>Adventure Activities:</strong> City tours, Water sports, Shopping
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Kaluthara.png" class="card-img-top" alt="Kalutara District" id="district-kalutara-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-kalutara-title">Kalutara District</h3>
+            <p class="card-text" id="district-kalutara-description">
+                <strong>Attractions:</strong> Richmond Castle, Kalutara Bodhiya, Brief Garden<br>
+                <strong>Wildlife:</strong> Kalu River Ecosystem<br>
+                <strong>Adventure Activities:</strong> River safaris, Beach activities
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Kurunegala.png" class="card-img-top" alt="Kurunegala District" id="district-kurunegala-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-kurunegala-title">Kurunegala District</h3>
+            <p class="card-text" id="district-kurunegala-description">
+                <strong>Attractions:</strong> Ethagala Rock, Ridi Viharaya, Padeniya Raja Maha Viharaya<br>
+                <strong>Wildlife:</strong> Athwelthota Forest Reserve<br>
+                <strong>Adventure Activities:</strong> River safaris, Beach activities
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Puttalam.png" class="card-img-top" alt="Puththalam District" id="district-puttalam-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-puttalam-title">Puththalam District</h3>
+            <p class="card-text" id="district-puttalam-description">
+                <strong>Attractions:</strong> Anawilundawa Sanctuary, Dutch Bay, Kudawa Beach<br>
+                <strong>Wildlife:</strong> Anawilundawa Bird Sanctuary, Kalpitiya<br>
+                <strong>Adventure Activities:</strong> Kite Surfing, Whale Watching, Boat Tours
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Badulla.png" class="card-img-top" alt="Badulla District" id="district-badulla-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-badulla-title">Badulla District</h3>
+            <p class="card-text" id="district-badulla-description">
+                <strong>Attractions:</strong> Ravana Falls, Dhowa Temple, Ella Rock<br>
+                <strong>Wildlife:</strong> Horton Plains National Park, Udawalawe National Park<br>
+                <strong>Adventure Activities:</strong> Trekking, Waterfall Hiking, Camping
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-3">
+    <div class="card h-100 border-0 shadow-sm">
+        <img src="Moneragala.png" class="card-img-top" alt="Monaragala District" id="district-moneragala-img">
+        <div class="card-body">
+            <h3 class="card-title" id="district-moneragala-title">Monaragala District</h3>
+            <p class="card-text" id="district-moneragala-description">
+                <strong>Attractions:</strong> Kataragama Temple, Yala National Park, Tissamaharama<br>
+                <strong>Wildlife:</strong> Yala National Park, Bundala National Park<br>
+                <strong>Adventure Activities:</strong> Safari, Bird Watching, Hiking
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4" id="contact-title">Contact Us</h2>
+        <form id="contact-form">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Your Name" id="contact-name">
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control" placeholder="Your Email" id="contact-email">
+                </div>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="Your Message" id="contact-message"></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" id="contact-submit">Send Message</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4" id="footer">
+    <div class="container text-center">
+        <p class="mb-0" id="footer-text">&copy; 2025 Sri Lanka Tourism. All Rights Reserved.</p>
+    </div>
+</footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

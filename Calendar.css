@@ -1,0 +1,129 @@
+:root {
+    --primary-color: linear-gradient(45deg, #3375FF, #33BDFF); /* Tropical sunset orange to yellow */
+    --secondary-color: linear-gradient(45deg, #1A5276, #154360); /* Vibrant green to aqua */
+    --accent-color: linear-gradient(45deg, #3375FF, #33BDFF); /* Ocean blue to sky blue */
+    --text-color: #2C3E50;
+    --background-color: linear-gradient(120deg, #eeeef3, #FDFEFE); /* Bright white */
+    --light-grey: #F8F9FA;
+    --dark-grey: linear-gradient(45deg, #1A5276, #154360); /* Deep ocean blue */
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    background: var(--primary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--light-grey);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.badge {
+    padding: 8px 20px;
+    font-size: 1rem;
+    margin-top: 10px;
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--white);
+    border-radius: 50px;
+}
+
+.badge.bg-primary {
+    background: var(--primary-color);
+}
+
+.badge.bg-success {
+    background: var(--secondary-color);
+}
+
+.badge.bg-info {
+    background: var(--accent-color);
+}
+
+.card-footer {
+    font-size: 1.2rem;
+    color: var(--dark-grey);
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.event-card {
+    border-left: 5px solid;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.religious-event { border-left-color: #FF6B6B; }
+.cultural-event { border-left-color: #4ECDC4; }
+.national-event { border-left-color: #45B7D1; }
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-md-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}

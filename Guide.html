@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka Road Sign Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Home.css">
+    <link rel="stylesheet" href="Guide.css">
+</head>
+<body>
+    <div class="website-container" id="main-container">
+        <header class="sticky-top" id="header-section">
+            <!-- Gradient background with Sri Lankan flag colors -->
+            <div class="header-bg-gradient"></div>
+            
+            <nav class="navbar navbar-expand-lg navbar-light container py-3" id="main-nav">
+                <div class="container-fluid" id="nav-container">
+                    <!-- Enhanced logo container -->
+                    <a class="navbar-brand d-flex align-items-center" href="#" id="brand-link">
+                        <img src="Logo.png" alt="Sri Lanka Tourism Logo" class="logo-img" id="logo-image">
+                        <span class="brand-text ms-2">Explore <span class="text-primary">Sri Lanka</span></span>
+                    </a>
+                    
+                    <!-- Improved mobile toggle -->
+                    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" id="nav-toggler">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <!-- Main navigation -->
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto align-items-center" id="nav-links">
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Home.html" id="nav-home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Map.html" id="nav-map">Map</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="cal.html" id="nav-calendar">Events</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Guide.html" id="nav-guide">Road Signs</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Recipes.html" id="nav-recipes">Recipes</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Tips.html" id="nav-tips">Guidelines</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Decorative wave element -->
+            <div class="header-wave"></div>
+        </header>
+        
+        <!-- Add these styles to your CSS file -->
+        <style>
+            /* Header background with Sri Lankan flag colors */
+            .header-bg-gradient {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(to right, #FF0000 33%, #FFCC00 33%, #FFCC00 66%, #009900 66%);
+            }
+            
+            /* Enhance the overall header */
+            #header-section {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+            }
+            
+            /* Logo styling */
+            .logo-img {
+                height: 75px;
+                transition: all 0.3s ease;
+            }
+            
+            /* Brand text styling */
+            .brand-text {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #333;
+                display: inline-block;
+            }
+            
+            /* Navigation link styling */
+            .nav-link {
+                position: relative;
+                transition: all 0.3s ease;
+                color: #444 !important;
+            }
+            
+            .nav-link:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 50%;
+                background-color: #0d6efd;
+                transition: all 0.3s ease;
+                transform: translateX(-50%);
+            }
+            
+            .nav-link:hover {
+                color: #0d6efd !important;
+            }
+            
+            .nav-link:hover:after {
+                width: 70%;
+            }
+            
+            /* Active link styling */
+            .nav-link.active {
+                color: #0d6efd !important;
+                font-weight: 600;
+            }
+            
+            .nav-link.active:after {
+                width: 70%;
+            }
+            
+            /* Login button enhancement */
+            #register-btn {
+                transition: all 0.3s ease;
+                border: none;
+                font-weight: 600;
+                background: linear-gradient(135deg, #0d6efd, #0a58ca);
+                color: white; /* Makes the text color white */
+            }
+
+            #register-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+                color: white; /* Ensures text stays white on hover too */
+            }
+            
+            /* Decorative wave at the bottom */
+            .header-wave {
+                height: 5px;
+                background: linear-gradient(45deg, #0d6efd, #0a58ca, #0d6efd);
+                opacity: 0.7;
+            }
+            
+            /* Scroll effect - add this with JavaScript */
+            .header-scrolled {
+                padding: 5px 0;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            /* Add Font Awesome if not already included */
+            @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        </style>
+        
+        <!-- Add this JavaScript for scroll effect -->
+        <script>
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header-section');
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        </script>
+      </header>
+
+    <div class="container">
+        <h1>Sri Lanka Road Sign Guide</h1> 
+
+        <h2>Directional informative signs</h2>
+        <div class="signs-wrapper">
+            <div class="sign">
+                <img src="Exit.png" alt="Exit">
+                <div class="sign-info">
+                    <h3>Exit</h3>
+                    <p>Indicates that Exit from a ntaional highway.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Area.png" alt="Area">
+                <div class="sign-info">
+                    <h3>Arriving into an area</h3>
+                    <p>Beginning of an administrative area.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Confirmingdistances.png" alt="Confirming distances">
+                <div class="sign-info">
+                    <h3>Confirming distances</h3>
+                    <p>Show distances to another city.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Direction.png" alt="Direction">
+                <div class="sign-info">
+                    <h3>Direction</h3>
+                    <p>Show direction to a specific area.</p>
+                </div>
+            </div>
+        
+    </section>
+
+
+    <h2>Road markings</h2>
+    <div class="signs-wrapper">
+        <div class="sign">
+            <img src="Overtaking.png" alt="overtaking">
+            <div class="sign-info">
+                <h3>Overtaking line</h3>
+                <p>Drivers can overtake</p>
+            </div>
+        </div>
+    
+        <div class="sign">
+            <img src="Warningline.png" alt="Warningline">
+            <div class="sign-info">
+                <h3>Warningline</h3>
+                <p>Do not overtake while driving on this lane</p>
+            </div>
+        </div>
+    
+        <div class="sign">
+            <img src="Pedestriancrossing.png" alt="Pedestrian crossing">
+            <div class="sign-info">
+                <h3>Pedestrian crossing</h3>
+                <p>Pedestrians are crossing from this lane. Be careful</p>
+            </div>
+        </div>
+    
+        <div class="sign">
+            <img src="Cyclecross.png" alt="Cycle crossing">
+            <div class="sign-info">
+                <h3>Cycle crossing</h3>
+                <p>Cycles are crossing from this lane. Be careful</p>
+            </div>
+        </div>
+    
+</section>
+
+        <h2>Useful for Signs for drivers</h2>
+        <div class="signs-wrapper">
+            <div class="sign">
+                <img src="Pedecross.png" alt="Pedestrian Crossing">
+                <div class="sign-info">
+                    <h3>Pedestrian crossing</h3>
+                    <p>Indicates a designated pedestrian crossing area.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Onewaystreet.png" alt="One-Way Street">
+                <div class="sign-info">
+                    <h3>One-Way street</h3>
+                    <p>Indicates traffic is allowed in one direction only.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Culdesac.png" alt="Cul-de-Sac">
+                <div class="sign-info">
+                    <h3>Cul-de-Sac</h3>
+                    <p>Indicates a dead-end street with no through traffic.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Parking.png" alt="Parking">
+                <div class="sign-info">
+                    <h3>Parking</h3>
+                    <p>Indicates a designated parking area.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Tel.png" alt="Telephone">
+                <div class="sign-info">
+                    <h3>Telephone</h3>
+                    <p>Indicates the location of a public telephone.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Emetel.png" alt="Emergency Telephone">
+                <div class="sign-info">
+                    <h3>Emergency telephone</h3>
+                    <p>Indicates the location of an emergency telephone.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Petsta.png" alt="Petrol Station">
+                <div class="sign-info">
+                    <h3>Petrol station</h3>
+                    <p>Indicates the location of a petrol station.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Resatu.png" alt="Restaurant">
+                <div class="sign-info">
+                    <h3>Restaurant</h3>
+                    <p>Indicates the location of a restaurant.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Caravansite.png" alt="Caravan Site">
+                <div class="sign-info">
+                    <h3>Caravan site</h3>
+                    <p>Indicates the location of a caravan site.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Youthhostel.png" alt="Youth Hostel">
+                <div class="sign-info">
+                    <h3>Youth hostel</h3>
+                    <p>Indicates the location of a youth hostel.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Swimmingpool.png" alt="Swimming Pool">
+                <div class="sign-info">
+                    <h3>Swimming pool</h3>
+                    <p>Indicates the location of a swimming pool.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Firstaid.png" alt="First Aid">
+                <div class="sign-info">
+                    <h3>First aid</h3>
+                    <p>Indicates the location of first aid facilities.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Hospital.png" alt="Hospital">
+                <div class="sign-info">
+                    <h3>Hospital</h3>
+                    <p>Indicates the location of a hospital.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Livingstreet.png" alt="Living Street">
+                <div class="sign-info">
+                    <h3>Living street</h3>
+                    <p>Indicates an area for pedestrians and cyclists.</p>
+                </div>
+            </div>
+        
+            <div class="sign">
+                <img src="Endoflivingstreet.png" alt="End of Living Street">
+                <div class="sign-info">
+                    <h3>End of living street</h3>
+                    <p>Indicates the end of a living street area.</p>
+                </div>
+            </div>
+        </div>
+        
+        <section id="traffic-signs">
+        <h2>Traffic Signs</h2>
+        <h2>Warning signs</h2>
+            <div class="sign">
+                <img src="curveleft.png" alt="Curve to Left">
+                <div class="sign-info">
+                    <h3>Curve to left</h3>
+                    <p>Indicates a left curve in the road ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Curveright.png" alt="Curve to Right">
+                <div class="sign-info">
+                    <h3>Curve to right</h3>
+                    <p>Indicates a right curve in the road ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Steep1.png" alt="steep Road">
+                <img src="steep2.png" alt="steep Road">
+                <div class="sign-info">
+                    <h3>Steep descent</h3>
+                    <p>Indicates ######.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Doublecurve1.png" alt="Double Curve">
+                <img src="Doublecurve2.png" alt="Double Curve">
+                <div class="sign-info">
+                    <h3>Double curve</h3>
+                    <p>Indicates a double curve in the road ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Intersection1.png" alt="Merge Right">
+                <div class="sign-info">
+                    <h3>Intersection</h3>
+                    <p>Indicates that Intersection with a secondary road.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Intersection2.png" alt="Merge Left">
+                <div class="sign-info">
+                    <h3>Intersection</h3>
+                    <p>Indicates that Intersection with a side road at right angles.</p>
+                </div>
+            </div>
+
+            <div class="sign">
+                <img src="Joinleft.png" alt="Merge Left">
+                <div class="sign-info">
+                    <h3>Joining a side road</h3>
+                    <p>Indicates that Joining a side road at right angles to the left.</p>
+                </div>
+            </div>
+
+            <div class="sign">
+                <img src="Joinright.png" alt="Merge Left">
+                <div class="sign-info">
+                    <h3>Joining a side road</h3>
+                    <p>Indicates that Joining a side road at right angles to the right.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Narrow1.png" alt="Road Narrows">
+                <img src="Narrow2.png" alt="Road Narrows">
+                <img src="Narrow3.png" alt="Road Narrows">
+                <div class="sign-info">
+                    <h3>Road narrows</h3>
+                    <p>Indicates that the road is becoming narrower ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Fog.png" alt="Fog">
+                <div class="sign-info">
+                    <h3>Fog</h3>
+                    <p>Indicates that ######.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Riverbank.png" alt="River bank">
+                <div class="sign-info">
+                    <h3>Quayside or riverbank</h3>
+                    <p>Indicates that Quayside or Riverbank ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Slippery.png" alt="Slippery When Wet">
+                <div class="sign-info">
+                    <h3>Slippery when wet</h3>
+                    <p>Indicates that the road surface may be slippery when wet.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Fallingrocks.png" alt="Falling Rocks">
+                <div class="sign-info">
+                    <h3>Falling rocks</h3>
+                    <p>Indicates the possibility of falling rocks on the road ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Pedcross.png" alt="Pedestrian Crossing">
+                <div class="sign-info">
+                    <h3>Pedestrian crossing</h3>
+                    <p>Indicates a pedestrian crossing area. Slow down and be ready to stop.</p>
+                </div>
+            </div>
+
+            <div class="sign">
+                <img src="Child.png" alt="Childern Crossing">
+                <div class="sign-info">
+                    <h3>Childern crossing</h3>
+                    <p>Indicates a Childern Crossing area. Slow down and be ready to stop.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Animalcross1.png" alt="Animal Crossing">
+                <div class="sign-info">
+                    <h3>Animal crossing</h3>
+                    <p>Indicates a possible animal crossing area. Be cautious.</p>
+                </div>
+            </div>
+
+            <div class="sign">
+                <img src="Animalcross2.png" alt="Wild Animals">
+                <div class="sign-info">
+                    <h3>Wild animals</h3>
+                    <p>Indicates that wild animals may be present, so drivers should be alert.</p>
+                </div>
+            </div>
+
+            <div class="sign">
+                <img src="Work.png" alt="Road Work Ahead">
+                <div class="sign-info">
+                    <h3>Road work ahead</h3>
+                    <p>Indicates that road work or construction is ahead, so drivers should exercise caution.</p>
+                </div>
+            </div>
+
+            <div class="sign">
+                <img src="Giveway.png" alt="Give way">
+                <div class="sign-info">
+                    <h3>Give way ahead</h3>
+                    <p>Indicates a Give way ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Twowaytraffic.png" alt="Two-way traffic">
+                <div class="sign-info">
+                    <h3>Two-way traffic</h3>
+                    <p>Indicates a Two-way traffic ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Roundabout.png" alt="Roundabout">
+                <div class="sign-info">
+                    <h3>Roundabout</h3>
+                    <p>Indicates a Roundabout ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Levelcrossing.png" alt="Level crossing">
+                <div class="sign-info">
+                    <h3>Level crossing with barriers</h3>
+                    <p>Indicates that a Level crossing with barriers ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Levelcrossing1.png" alt="Level crossing">
+                <div class="sign-info">
+                    <h3>Level crossing</h3>
+                    <p>Indicates that Level crossing without barriers ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Bump.png" alt="Bump">
+                <div class="sign-info">
+                    <h3>Bump</h3>
+                    <p>Indicates a bump or hump in the road ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Dip.png" alt="Dip">
+                <div class="sign-info">
+                    <h3>Dip</h3>
+                    <p>Indicates a dip or depression in the road ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Softv.png" alt="Soft verges">
+                <div class="sign-info">
+                    <h3>Soft verges</h3>
+                    <p>Indicates that Soft verges ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Trafficlight.png" alt="Traffic light">
+                <div class="sign-info">
+                    <h3>Traffic light</h3>
+                    <p>Indicates that Traffic light ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Stopsign.png" alt="Stop sign">
+                <div class="sign-info">
+                    <h3>Stop sign</h3>
+                    <p>Indicates that Stop sign ahead.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Singletrack.png" alt="Single track level crossing">
+                <div class="sign-info">
+                    <h3>Single track level crossing</h3>
+                    <p>Indicates that Single track level crossing.</p>
+                </div>
+            </div>
+            
+            <div class="sign">
+                <img src="Multitrack.png" alt="Multi-track level crossing">
+                <div class="sign-info">
+                    <h3>Multi-track level crossing</h3>
+                    <p>Indicates that Multi-track level crossing.</p>
+                </div>
+            </div>         
+        </section>
+
+
+
+        <h2>Regulatory signs</h2>
+        <section id="Regulatory signs">
+            <div class="sign">
+              <img src="Noentry.png" alt="No Entry">
+              <div class="sign-info">
+                <h3>No entry</h3>
+                <p>Prohibits entry for all vehicles.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Allvehpro.png" alt="All Vehicles Prohibited">
+              <div class="sign-info">
+                <h3>All vehicles prohibited</h3>
+                <p>Prohibits entry for all vehicles.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Nomotor.png" alt="No Motor Vehicles Except Motorcycles">
+              <div class="sign-info">
+                <h3>No motor vehicles except motorcycles</h3>
+                <p>Prohibits entry for motor vehicles, except motorcycles.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Notrucks.png" alt="No Trucks">
+              <div class="sign-info">
+                <h3>No trucks</h3>
+                <p>Prohibits entry for trucks.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Notrailers.png" alt="No Trailers">
+              <div class="sign-info">
+                <h3>No trailers</h3>
+                <p>Prohibits entry for trailers.</p>
+              </div>
+            </div>
+
+            <div class="sign">
+              <img src="Notractors.png" alt="No Tractors">
+              <div class="sign-info">
+                <h3>No tractors</h3>
+                <p>Prohibits entry for tractors.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Nomotorcycles.png" alt="No Motorcycles">
+              <div class="sign-info">
+                <h3>No motorcycles</h3>
+                <p>Prohibits entry for motorcycles.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Nomopeds.png" alt="No Mopeds">
+              <div class="sign-info">
+                <h3>No mopeds</h3>
+                <p>Prohibits entry for mopeds.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Noped.png" alt="No Pedestrians">
+              <div class="sign-info">
+                <h3>No Pedestrians</h3>
+                <p>Prohibits entry for pedestrians.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Nomotorvehicles.png" alt="No Motor Vehicles">
+              <div class="sign-info">
+                <h3>No motor vehicles</h3>
+                <p>Prohibits entry for motor vehicles.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Maxwid.png" alt="Maximum Width 2m">
+              <div class="sign-info">
+                <h3>Maximum width 2m</h3>
+                <p>Indicates a maximum width limit of 2 meters.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Maxhei.png" alt="Maximum Height 3.5m">
+              <div class="sign-info">
+                <h3>Maximum height 3.5m</h3>
+                <p>Indicates a maximum height limit of 3.5 meters.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Maxwei.png" alt="Maximum Weight 5t">
+              <div class="sign-info">
+                <h3>Maximum weight 5t</h3>
+                <p>Indicates a maximum weight limit of 5 tons.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Maxweiperaxel.png" alt="Maximum Weight Per Axle">
+              <div class="sign-info">
+                <h3>Maximum weight per axle</h3>
+                <p>Indicates a maximum weight limit per axle.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Minsafdistance.png" alt="Minimum Safe Distance">
+              <div class="sign-info">
+                <h3>Minimum safe distance</h3>
+                <p>Indicates a minimum safe distance to be maintained.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Noleft.png" alt="No Left Turn">
+              <div class="sign-info">
+                <h3>No left turn</h3>
+                <p>Prohibits left turns.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Noright.png" alt="No Right Turn">
+              <div class="sign-info">
+                <h3>No right turn</h3>
+                <p>Prohibits right turns.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Nou.png" alt="No U-Turn">
+              <div class="sign-info">
+                <h3>No U turn</h3>
+                <p>Prohibits U-turns.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Noover.png" alt="No Overtaking">
+              <div class="sign-info">
+                <h3>No overtaking</h3>
+                <p>Prohibits overtaking.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Noover1.png" alt="No Overtaking by Trucks">
+              <div class="sign-info">
+                <h3>No overtaking by trucks</h3>
+                <p>Prohibits overtaking by trucks.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Nohorns.png" alt="No Horns">
+              <div class="sign-info">
+                <h3>No horns</h3>
+                <p>Prohibits the use of horns.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Nopark.png" alt="No Parking">
+              <div class="sign-info">
+                <h3>No parking</h3>
+                <p>Prohibits parking.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Noparkstand.png" alt="No Parking and Stopping">
+              <div class="sign-info">
+                <h3>No parking and stopping</h3>
+                <p>Prohibits parking and stopping.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Noparkodd.png" alt="No Parking on Odd">
+              <div class="sign-info">
+                <h3>No parking on odd</h3>
+                <p>Prohibits parking on odd-numbered days.</p>
+              </div>
+            </div>
+            <div class="sign">
+              <img src="Noparkeven.png" alt="No Parking on Even">
+              <div class="sign-info">
+                <h3>No parking on even</h3>
+                <p>Prohibits parking on even-numbered days.</p>
+              </div>
+            </div>
+          </section>
+
+        <section id="Restrictive signs">
+            <h2>Mandatory signs</h2>
+            <div class="sign">
+                <img src="Maxspeed.png" alt="Maximum speed">
+                <div class="sign-info">
+                    <h3>Maximum speed</h3>
+                    <p>Maximum speed is 50Kmph. Drivers should limit speed.</p>
+                </div>
+            </div>
+
+            <div class="signs-wrapper">
+                <div class="sign">
+                    <img src="Proceedstraight.png" alt="Proceed Straight">
+                    <div class="sign-info">
+                        <h3>Proceed straight</h3>
+                        <p>Indicates that traffic must proceed straight ahead.</p>
+                    </div>
+                </div>
+            
+                <div class="sign">
+                    <img src="Turnleftahead.png" alt="Turn Left Ahead">
+                    <div class="sign-info">
+                        <h3>Turn left ahead</h3>
+                        <p>Indicates that drivers must turn left ahead.</p>
+                    </div>
+                </div>
+            
+                <div class="sign">
+                    <img src="Turnrightahead.png" alt="Turn Right Ahead">
+                    <div class="sign-info">
+                        <h3>Turn right ahead</h3>
+                        <p>Indicates that drivers must turn right ahead.</p>
+                    </div>
+                </div>
+            
+                <div class="sign">
+                    <img src="Turnleft.png" alt="Turn Left">
+                    <div class="sign-info">
+                        <h3>Turn left</h3>
+                        <p>Indicates that drivers must turn left.</p>
+                    </div>
+                </div>
+            
+                <div class="sign">
+                    <img src="Turnright.png" alt="Turn Right">
+                    <div class="sign-info">
+                        <h3>Turn right</h3>
+                        <p>Indicates that drivers must turn right.</p>
+                    </div>
+                </div>
+            
+        </section>
+    </div>
+
+    <script src="Guide.js"></script>
+</body>
+</html>

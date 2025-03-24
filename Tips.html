@@ -1,0 +1,513 @@
+<!-- HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka Travel Guidelines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Home.css">
+</head>
+<body>
+    <div class="website-container" id="main-container">
+        <header class="sticky-top" id="header-section">
+            <!-- Gradient background with Sri Lankan flag colors -->
+            <div class="header-bg-gradient"></div>
+            
+            <nav class="navbar navbar-expand-lg navbar-light container py-3" id="main-nav">
+                <div class="container-fluid" id="nav-container">
+                    <!-- Enhanced logo container -->
+                    <a class="navbar-brand d-flex align-items-center" href="#" id="brand-link">
+                        <img src="Logo.png" alt="Sri Lanka Tourism Logo" class="logo-img" id="logo-image">
+                        <span class="brand-text ms-2">Explore <span class="text-primary">Sri Lanka</span></span>
+                    </a>
+                    
+                    <!-- Improved mobile toggle -->
+                    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" id="nav-toggler">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <!-- Main navigation -->
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto align-items-center" id="nav-links">
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Home.html" id="nav-home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Map.html" id="nav-map">Map</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="cal.html" id="nav-calendar">Events</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Guide.html" id="nav-guide">Road Signs</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Recipes.html" id="nav-recipes">Recipes</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-medium" href="Tips.html" id="nav-tips">Guidelines</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Decorative wave element -->
+            <div class="header-wave"></div>
+        </header>
+        
+        <!-- Add these styles to your CSS file -->
+        <style>
+            /* Header background with Sri Lankan flag colors */
+            .header-bg-gradient {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(to right, #FF0000 33%, #FFCC00 33%, #FFCC00 66%, #009900 66%);
+            }
+            
+            /* Enhance the overall header */
+            #header-section {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+            }
+            
+            /* Logo styling */
+            .logo-img {
+                height: 75px;
+                transition: all 0.3s ease;
+            }
+            
+            /* Brand text styling */
+            .brand-text {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #333;
+                display: inline-block;
+            }
+            
+            /* Navigation link styling */
+            .nav-link {
+                position: relative;
+                transition: all 0.3s ease;
+                color: #444 !important;
+            }
+            
+            .nav-link:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 50%;
+                background-color: #0d6efd;
+                transition: all 0.3s ease;
+                transform: translateX(-50%);
+            }
+            
+            .nav-link:hover {
+                color: #0d6efd !important;
+            }
+            
+            .nav-link:hover:after {
+                width: 70%;
+            }
+            
+            /* Active link styling */
+            .nav-link.active {
+                color: #0d6efd !important;
+                font-weight: 600;
+            }
+            
+            .nav-link.active:after {
+                width: 70%;
+            }
+            
+            /* Login button enhancement */
+            #register-btn {
+                transition: all 0.3s ease;
+                border: none;
+                font-weight: 600;
+                background: linear-gradient(135deg, #0d6efd, #0a58ca);
+                color: white; /* Makes the text color white */
+            }
+
+            #register-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+                color: white; /* Ensures text stays white on hover too */
+            }
+            
+            /* Decorative wave at the bottom */
+            .header-wave {
+                height: 5px;
+                background: linear-gradient(45deg, #0d6efd, #0a58ca, #0d6efd);
+                opacity: 0.7;
+            }
+            
+            /* Scroll effect - add this with JavaScript */
+            .header-scrolled {
+                padding: 5px 0;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            /* Add Font Awesome if not already included */
+            @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        </style>
+        
+        <!-- Add this JavaScript for scroll effect -->
+        <script>
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header-section');
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        </script>
+      </header>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-5">Sri Lankan Travel Guidelines</h1>
+
+        <!-- Category Navigation -->
+        <div class="category-nav mb-4" id="categoryNav">
+            <button class="category-btn active" data-category="religious" id="religiousBtn">Religious Practices</button>
+            <button class="category-btn" data-category="wildlife" id="wildlifeBtn">Wildlife Safety</button>
+            <button class="category-btn" data-category="dining" id="diningBtn">Dining Etiquette</button>
+            <button class="category-btn" data-category="customs" id="customsBtn">Local Customs</button>
+        </div>
+
+<!-- Enhanced Content Sections -->
+<div class="guidelines-content">
+    <!-- Religious Practices -->
+    <section id="religiousSection" class="content-section active">
+        <h2>Religious Practices</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="temple-dress-code">
+                    <h3>Temple Dress Code</h3>
+                    <img src="Temple1.jpg" alt="Temple Dress Code" class="guideline-img">
+                    <ul>
+                        <li>Wear modest clothing that covers shoulders and knees.</li>
+                        <li>Remove shoes before entering temples.</li>
+                        <li>Avoid wearing hats inside sacred places.</li>
+                        <li>Refrain from wearing flashy or tight clothing.</li>
+                        <li>Use a shawl or scarf if needed for covering.</li>
+                        <li>Respect the local dress traditions.</li>
+                        <li>Ensure your attire is clean and neat.</li>
+                        <li>Women can carry a sarong for easy adjustments.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="temple-behavior">
+                    <h3>Temple Behavior</h3>
+                    <img src="Temple2.jpg" alt="Temple Behavior" class="guideline-img">
+                    <ul>
+                        <li>Maintain silence inside the temple premises.</li>
+                        <li>Do not turn your back to Buddha statues.</li>
+                        <li>Ask permission before taking photos.</li>
+                        <li>Avoid touching sacred objects or paintings.</li>
+                        <li>Walk clockwise around the stupa.</li>
+                        <li>Do not point your feet towards sacred objects.</li>
+                        <li>Refrain from smoking or eating in the temple area.</li>
+                        <li>Follow the instructions of temple staff or monks.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wildlife Safety -->
+    <section id="wildlifeSection" class="content-section">
+        <h2>Wildlife Safety</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="elephant-safety">
+                    <h3>Elephant Encounters</h3>
+                    <img src="Wildlife3.jpg" alt="Elephant Safety" class="guideline-img">
+                    <ul>
+                        <li>Maintain a safe distance from wild elephants.</li>
+                        <li>Never attempt to feed or approach them.</li>
+                        <li>Avoid driving close to elephants on rural roads.</li>
+                        <li>Do not use flash photography around elephants.</li>
+                        <li>Be cautious during mating or calving seasons.</li>
+                        <li>Respect elephant crossing signs on highways.</li>
+                        <li>Stay alert in elephant-prone areas, especially at night.</li>
+                        <li>Report aggressive elephant encounters to authorities.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="safari-rules">
+                    <h3>Safari Guidelines</h3>
+                    <img src="Wildlife1.jpg" alt="Safari Rules" class="guideline-img">
+                    <ul>
+                        <li>Stay in vehicles during safaris.</li>
+                        <li>Follow the guide's instructions at all times.</li>
+                        <li>Refrain from loud noises that can disturb animals.</li>
+                        <li>Do not litter in wildlife parks.</li>
+                        <li>Carry water but avoid plastic bottles.</li>
+                        <li>Wear neutral-colored clothing for safaris.</li>
+                        <li>Avoid feeding animals in the park.</li>
+                        <li>Use binoculars for a closer view instead of approaching.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Etiquette -->
+    <section id="diningSection" class="content-section">
+        <h2>Dining Etiquette</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="hand-eating">
+                    <h3>Traditional Eating</h3>
+                    <img src="Food3.jpg" alt="Hand Eating" class="guideline-img">
+                    <ul>
+                        <li>Use your right hand for eating.</li>
+                        <li>Mix rice and curry with fingers in traditional dining.</li>
+                        <li>Wash hands thoroughly before and after meals.</li>
+                        <li>Accept food with your right hand.</li>
+                        <li>Do not overfill your plate; take only what you can eat.</li>
+                        <li>Refrain from using cutlery in traditional settings unless offered.</li>
+                        <li>Observe how locals eat and follow their lead.</li>
+                        <li>Thank the host or server for the meal.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="dining-customs">
+                    <h3>Dining Customs</h3>
+                    <img src="Food2.jpg" alt="Dining Customs" class="guideline-img">
+                    <ul>
+                        <li>Wait for elders to start eating.</li>
+                        <li>Share food when offered.</li>
+                        <li>Do not refuse food unless absolutely necessary.</li>
+                        <li>Eat quietly and avoid making loud noises.</li>
+                        <li>Compliment the host on the meal.</li>
+                        <li>Offer to help with serving or cleaning up.</li>
+                        <li>Respect local traditions and preferences.</li>
+                        <li>Tip servers if dining at a restaurant.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Customs -->
+    <section id="customsSection" class="content-section">
+        <h2>Local Customs</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="greetings">
+                    <h3>Greetings</h3>
+                    <img src="Welcome1.jpg" alt="Greetings" class="guideline-img">
+                    <ul>
+                        <li>Use "Ayubowan" with palms together at chest level to greet respectfully.</li>
+                        <li>Avoid handshakes unless initiated by the other person.</li>
+                        <li>Smile and make eye contact when greeting.</li>
+                        <li>Learn basic Sinhala or Tamil greetings for better interaction.</li>
+                        <li>Do not hug or kiss unless you know the person well.</li>
+                        <li>Show deference to elders when greeting.</li>
+                        <li>Use titles like "Mr." or "Ms." unless invited to use first names.</li>
+                        <li>Respect traditional greetings during cultural events.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="respect-customs">
+                    <h3>Public Behavior</h3>
+                    <img src="Welcome2.jpg" alt="Public Behavior" class="guideline-img">
+                    <ul>
+                        <li>Public displays of affection are discouraged.</li>
+                        <li>Dress modestly in public places, especially in rural areas.</li>
+                        <li>Avoid loud or disruptive behavior in public settings.</li>
+                        <li>Respect local laws and traditions.</li>
+                        <li>Refrain from smoking in public places unless permitted.</li>
+                        <li>Dispose of trash responsibly.</li>
+                        <li>Ask permission before taking photos of people.</li>
+                        <li>Do not point at people or objects with your finger.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visa and Travel Tips -->
+    <section id="visaSection" class="content-section">
+        <h2>Visa and Travel Tips</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="visa-regulations">
+                    <h3>Visa Requirements</h3>
+                    <img src="visa-requirements.jpg" alt="Visa Requirements" class="guideline-img">
+                    <ul>
+                        <li>Obtain an Electronic Travel Authorization (ETA) before arriving.</li>
+                        <li>Fees vary by country; check online for the latest updates.</li>
+                        <li>Visa extensions can be arranged at the Immigration Office in Colombo.</li>
+                        <li>Carry printed copies of your ETA approval for easy reference.</li>
+                        <li>Ensure your passport is valid for at least six months.</li>
+                        <li>Declare foreign currency exceeding USD 15,000 upon arrival.</li>
+                        <li>Check for COVID-19 travel requirements or restrictions.</li>
+                        <li>Familiarize yourself with Sri Lanka's customs regulations.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="guideline-card" id="budget-tips">
+                    <h3>Budget Travel Tips</h3>
+                    <img src="budget-travel.jpg" alt="Budget Travel" class="guideline-img">
+                    <ul>
+                        <li>Use public transport like buses and trains to save money.</li>
+                        <li>Eat at local restaurants for authentic and affordable meals.</li>
+                        <li>Book accommodations in advance for better deals.</li>
+                        <li>Travel during the off-peak season for lower prices.</li>
+                        <li>Use ride-sharing apps for affordable local travel.</li>
+                        <li>Shop at local markets for souvenirs and essentials.</li>
+                        <li>Carry a reusable water bottle to reduce costs.</li>
+                        <li>Look for free or low-cost attractions like public beaches and parks.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+        </div>
+    </main>
+
+    <script src="guidelines.js"></script>
+</body>
+</html>
+
+<style>
+
+
+.category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #4a90e2;
+    background: none;
+    color: #4a90e2;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+.category-btn.active {
+    background: #4a90e2;
+    color: white;
+}
+
+.category-btn:hover {
+    background: #4a90e2;
+    color: white;
+}
+
+.content-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.content-section.active {
+    display: block;
+    opacity: 1;
+}
+
+.guideline-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.guideline-card:hover {
+    transform: translateY(-5px);
+}
+
+.guideline-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.guideline-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.guideline-card p {
+    color: #666;
+    line-height: 1.6;
+}
+</style>
+
+<script>
+/* JavaScript */
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const sections = document.querySelectorAll('.content-section');
+
+    function showSection(categoryId) {
+        // Hide all sections
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // Show selected section
+        const activeSection = document.getElementById(categoryId + 'Section');
+        if (activeSection) {
+            activeSection.classList.add('active');
+        }
+
+        // Update button states
+        categoryBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.category === categoryId) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Save current category to localStorage
+        localStorage.setItem('activeCategory', categoryId);
+    }
+
+    // Add click handlers to category buttons
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.dataset.category;
+            showSection(category);
+        });
+    });
+
+    // Check for saved category in localStorage
+    const savedCategory = localStorage.getItem('activeCategory');
+    if (savedCategory) {
+        showSection(savedCategory);
+    } else {
+        // Show religious section by default
+        showSection('religious');
+    }
+});
+</script>

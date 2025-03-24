@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Sri Lanka - Admin Panel</title>
+    <link rel="stylesheet" href="admin2.css">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="logo.png" alt="Explore Sri Lanka">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active" data-section="dashboard"><span class="icon">📊</span> Dashboard</li>
+                    <li data-section="destinations"><span class="icon">🏝️</span> Destinations</li>
+                    <li data-section="events"><span class="icon">📅</span> Events</li>
+                    <li data-section="food"><span class="icon">🍲</span> Food & Recipes</li>
+                    <li data-section="guidelines"><span class="icon">📝</span> Guidelines</li>
+                    <li data-section="road-signs"><span class="icon">🚦</span> Road Signs</li>
+                    <li data-section="settings"><span class="icon">⚙️</span> Settings</li>
+                    <li data-section="logout"><span class="icon">🚪</span> Logout</li>
+                </ul>
+            </nav>
+        </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const logoutButton = document.querySelector('[data-section="logout"]');
+        
+            if (logoutButton) {
+                logoutButton.addEventListener("click", function() {
+                    // Redirect to Home.html
+                    window.location.href = "Home.html";
+                });
+            }
+        });
+    </script>
+
+        <div class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="admin-profile">
+                    <span class="notification">🔔</span>
+                    <div class="profile">
+                        <img src="Admin.png" alt="Admin">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+<!-- Dashboard Section -->
+<section id="dashboard" class="content-section active">
+    <h1>Dashboard Overview</h1>
+    
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon">🏝️</div>
+            <h3>Total Destinations</h3>
+            <p class="stat-number">24</p>
+            <p class="stat-info">+3 this month</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <h3>Upcoming Events</h3>
+            <p class="stat-number">12</p>
+            <p class="stat-info">Next: Poya Day</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🖼️</div>
+            <h3>Media Items</h3>
+            <p class="stat-number">156</p>
+            <p class="stat-info">+25 this month</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <h3>Website Visits</h3>
+            <p class="stat-number">5,438</p>
+            <p class="stat-info">+12% from last month</p>
+        </div>
+    </div>
+    
+    <div class="dashboard-panels">
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h2>Recent Activity</h2>
+                <button class="view-all-btn">View All</button>
+            </div>
+            <div class="panel-body">
+                <table class="activity-table">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Section</th>
+                            <th>Item</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-added">Added</span></td>
+                            <td>Events</td>
+                            <td>Thai Pongal Festival</td>
+                            <td>March 8, 2025</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-updated">Updated</span></td>
+                            <td>Destinations</td>
+                            <td>Jaffna District</td>
+                            <td>March 7, 2025</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-deleted">Deleted</span></td>
+                            <td>Road Signs</td>
+                            <td>Old warning sign</td>
+                            <td>March 6, 2025</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-added">Added</span></td>
+                            <td>Food</td>
+                            <td>Hoppers recipe</td>
+                            <td>March 5, 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="dashboard-panel quick-actions">
+            <div class="panel-header">
+                <h2>Quick Actions</h2>
+            </div>
+
+            <div class="panel-body">
+                <div class="quick-action-buttons">
+                    <button class="quick-action-btn" data-section="destinations"><span class="action-icon">➕</span> Add Destination</button>
+                    <button class="quick-action-btn" data-section="events"><span class="action-icon">📝</span> Create Event</button>
+                    <button class="quick-action-btn" data-section="upload-media"><span class="action-icon">🖼️</span> Upload Media</button>
+                    <button class="quick-action-btn" data-section="analytics"><span class="action-icon">📊</span> View Analytics</button>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelectorAll(".quick-action-btn").forEach(button => {
+                    button.addEventListener("click", function() {
+                        const section = this.getAttribute("data-section");
+                        if (section) {
+                            document.querySelectorAll("nav ul li").forEach(navItem => {
+                                navItem.classList.remove("active");
+                            });
+                            
+                            const targetTab = document.querySelector(`nav ul li[data-section='${section}']`);
+                            if (targetTab) {
+                                targetTab.classList.add("active");
+                                // Implement your tab-switching logic here (e.g., showing the relevant content)
+                                console.log("Navigating to: ", section);
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+</section>
+
+
+                    <style>
+                    /* Dashboard Section Styles */
+                    .content-section {
+                        display: none;
+                        background-color: white;
+                        border-radius: 12px;
+                        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                        padding: 30px;
+                        margin: 20px 0;
+                    }
+
+                    .content-section.active {
+                        display: block;
+                        animation: fadeIn 0.5s ease;
+                    }
+
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(10px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+
+                    .content-section h1 {
+                        color: #3375FF;
+                        font-size: 28px;
+                        font-weight: 700;
+                        margin-bottom: 30px;
+                        border-bottom: 2px solid #f0f0f0;
+                        padding-bottom: 15px;
+                    }
+
+                    /* Stats Container */
+                    .stats-container {
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: 25px;
+                        margin-bottom: 40px;
+                    }
+
+                    .stat-card {
+                        background: white;
+                        border-radius: 12px;
+                        padding: 25px;
+                        position: relative;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        border-left: 5px solid transparent;
+                        overflow: hidden;
+                    }
+
+                    .stat-card:hover {
+                        transform: translateY(-8px);
+                        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .stat-card:nth-child(1) {
+                        border-left-color: #3375FF;
+                    }
+
+                    .stat-card:nth-child(2) {
+                        border-left-color: #ffcc00;
+                    }
+
+                    .stat-card:nth-child(3) {
+                        border-left-color: #cc3333;
+                    }
+
+                    .stat-card:nth-child(4) {
+                        border-left-color: #339933;
+                    }
+
+                    .stat-card::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 100px;
+                        height: 100%;
+                        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(51, 117, 255, 0.05) 100%);
+                    }
+
+                    .stat-icon {
+                        font-size: 32px;
+                        position: absolute;
+                        top: 15px;
+                        right: 15px;
+                        opacity: 0.2;
+                    }
+
+                    .stat-card h3 {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #555;
+                        margin-bottom: 15px;
+                    }
+
+                    .stat-number {
+                        font-size: 32px;
+                        font-weight: 700;
+                        color: #2C3E50;
+                        margin-bottom: 5px;
+                    }
+
+                    .stat-info {
+                        font-size: 14px;
+                        color: #777;
+                    }
+
+                    /* Dashboard Panels */
+                    .dashboard-panels {
+                        display: grid;
+                        grid-template-columns: 2fr 1fr;
+                        gap: 25px;
+                    }
+
+                    .dashboard-panel {
+                        background: white;
+                        border-radius: 12px;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                        overflow: hidden;
+                    }
+
+                    .panel-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 15px 25px;
+                        border-bottom: 1px solid #f0f0f0;
+                    }
+
+                    .panel-header h2 {
+                        color: #3375FF;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+
+                    .view-all-btn {
+                        background: none;
+                        border: none;
+                        color: #3375FF;
+                        font-size: 14px;
+                        cursor: pointer;
+                        padding: 5px 10px;
+                        border-radius: 4px;
+                        transition: background 0.3s;
+                    }
+
+                    .view-all-btn:hover {
+                        background: rgba(51, 117, 255, 0.1);
+                    }
+
+                    .panel-body {
+                        padding: 20px 25px;
+                    }
+
+                    /* Activity Table */
+                    .activity-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+
+                    .activity-table th {
+                        text-align: left;
+                        padding: 12px 10px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: #666;
+                        border-bottom: 2px solid #f0f0f0;
+                    }
+
+                    .activity-table td {
+                        padding: 15px 10px;
+                        font-size: 14px;
+                        border-bottom: 1px solid #f5f5f5;
+                        color: #444;
+                    }
+
+                    .activity-table tr:hover td {
+                        background-color: #f9f9f9;
+                    }
+
+                    .badge {
+                        padding: 5px 10px;
+                        border-radius: 50px;
+                        font-size: 12px;
+                        font-weight: 600;
+                        color: white;
+                    }
+
+                    .badge-added {
+                        background-color: #339933;
+                    }
+
+                    .badge-updated {
+                        background-color: #3375FF;
+                    }
+
+                    .badge-deleted {
+                        background-color: #cc3333;
+                    }
+
+                    /* Quick Actions */
+                    .quick-action-buttons {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 15px;
+                    }
+
+                    .quick-action-btn {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        background: linear-gradient(to right, rgba(51, 117, 255, 0.05), rgba(51, 117, 255, 0.01));
+                        border: 1px solid #f0f0f0;
+                        border-radius: 8px;
+                        padding: 15px;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                        color: #2C3E50;
+                        font-weight: 500;
+                    }
+
+                    .quick-action-btn:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+                        background: linear-gradient(to right, rgba(51, 117, 255, 0.1), rgba(51, 117, 255, 0.05));
+                    }
+
+                    .action-icon {
+                        margin-right: 10px;
+                        font-size: 18px;
+                    }
+
+                    /* Responsive Adjustments */
+                    @media (max-width: 1200px) {
+                        .stats-container {
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+                    }
+
+                    @media (max-width: 768px) {
+                        .stats-container {
+                            grid-template-columns: 1fr;
+                        }
+                        
+                        .dashboard-panels {
+                            grid-template-columns: 1fr;
+                        }
+                        
+                        .quick-action-buttons {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+                    </style>
+
+            <!-- Destinations Section -->
+            <section id="destinations" class="content-section">
+                <div class="section-header">
+                    <h1>Manage Destinations</h1>
+                    <button class="add-new-btn" id="add-destination-btn">+ Add New Destination</button>
+                </div>
+                
+                <div class="destination-list">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>District</th>
+                                <th>Main Attractions</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Jaffna District</td>
+                                <td>Jaffna Fort, Nallur Temple, Keerimalai Springs</td>
+                                <td>March 7, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="1">Edit</button>
+                                    <button class="delete-btn" data-id="1">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Kilinochchi District</td>
+                                <td>War Memorial, Elephant Pass, Beaches</td>
+                                <td>February 28, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="2">Edit</button>
+                                    <button class="delete-btn" data-id="2">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mannar District</td>
+                                <td>Mannar Fort, Adam's Bridge, Temple</td>
+                                <td>February 15, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="3">Edit</button>
+                                    <button class="delete-btn" data-id="3">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Mullaitivu District</td>
+                                    <td>War Memorials, Nandikadal Lagoon, Coastal Areas</td>
+                                    <td>March 4, 2025</td>
+                                    <td class="actions">
+                                        <button class="edit-btn" data-id="23">Edit</button>
+                                        <button class="delete-btn" data-id="23">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Vavuniya District</td>
+                                    <td>Madukanda Viharaya, Vavuniya Tank, Archaeological Sites</td>
+                                    <td>February 21, 2025</td>
+                                    <td class="actions">
+                                        <button class="edit-btn" data-id="24">Edit</button>
+                                        <button class="delete-btn" data-id="24">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Trincomalee District</td>
+                                    <td>Koneswaram Temple, Pigeon Island, Trincomalee Harbor</td>
+                                    <td>March 6, 2025</td>
+                                    <td class="actions">
+                                        <button class="edit-btn" data-id="25">Edit</button>
+                                        <button class="delete-btn" data-id="25">Delete</button>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Batticaloa District</td>
+                                <td>Batticaloa Lighthouse, Dutch Fort, Maduru Oya National Park</td>
+                                <td>March 5, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="4">Edit</button>
+                                    <button class="delete-btn" data-id="4">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Ampara District</td>
+                                <td>Arugam Bay, Lahugala National Park, Kumana National Park</td>
+                                <td>March 1, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="5">Edit</button>
+                                    <button class="delete-btn" data-id="5">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Polonnaruwa District</td>
+                                <td>Ancient City, Gal Vihara, Royal Palace, Minneriya National Park</td>
+                                <td>February 20, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="6">Edit</button>
+                                    <button class="delete-btn" data-id="6">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Anuradhapura District</td>
+                                <td>Sacred City, Sri Maha Bodhi Tree, Ruwanwelisaya Stupa, Wilpattu National Park</td>
+                                <td>March 3, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="7">Edit</button>
+                                    <button class="delete-btn" data-id="7">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Matale District</td>
+                                <td>Dambulla Cave Temple, Sigiriya Rock Fortress, Knuckles Mountain Forest Reserve</td>
+                                <td>February 25, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="8">Edit</button>
+                                    <button class="delete-btn" data-id="8">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Kandy District</td>
+                                <td>Temple of the Tooth, Royal Botanical Gardens, Udawattekele Sanctuary</td>
+                                <td>March 8, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="9">Edit</button>
+                                    <button class="delete-btn" data-id="9">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Nuwara Eliya District</td>
+                                <td>Gregory Lake, Tea Plantations, Horton Plains National Park</td>
+                                <td>February 22, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="10">Edit</button>
+                                    <button class="delete-btn" data-id="10">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Ratnapura District</td>
+                                <td>Gem Mines, Adam's Peak, Sinharaja Forest Reserve</td>
+                                <td>March 6, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="11">Edit</button>
+                                    <button class="delete-btn" data-id="11">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Kagalle District</td>
+                                <td>Dambulla Cave Temple, Pinnawala Elephant Orphanage, Rock Forest Temple</td>
+                                <td>February 18, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="12">Edit</button>
+                                    <button class="delete-btn" data-id="12">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Galle District</td>
+                                <td>Galle Fort, Unawatuna Beach, Maritime Museum, Kanneliya Forest Reserve</td>
+                                <td>March 2, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="13">Edit</button>
+                                    <button class="delete-btn" data-id="13">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Matara District</td>
+                                <td>Polhena Beach, Tsunami Memorial, Dondra Lighthouse</td>
+                                <td>February 27, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="14">Edit</button>
+                                    <button class="delete-btn" data-id="14">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Hambantota District</td>
+                                <td>Bundala National Park, Hambantota Salt Pans, Yala National Park</td>
+                                <td>March 4, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="15">Edit</button>
+                                    <button class="delete-btn" data-id="15">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>Gampaha District</td>
+                                <td>Pinnawala Elephant Orphanage, Mirisgasthanam Temple, Muthurajawela Marsh</td>
+                                <td>February 19, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="16">Edit</button>
+                                    <button class="delete-btn" data-id="16">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>Colombo District</td>
+                                <td>National Museum, Gangaramaya Temple, Beira Lake</td>
+                                <td>March 9, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="17">Edit</button>
+                                    <button class="delete-btn" data-id="17">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Kalutara District</td>
+                                <td>Richmond Castle, Kalutara Bodhiya, Brief Garden, Kalu River Ecosystem</td>
+                                <td>February 17, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="18">Edit</button>
+                                    <button class="delete-btn" data-id="18">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Kurunegala District</td>
+                                <td>Ethagala Rock, Ridi Viharaya, Padeniya Raja Maha Viharaya</td>
+                                <td>March 8, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="19">Edit</button>
+                                    <button class="delete-btn" data-id="19">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>Putthtalam District</td>
+                                <td>Anawilundawa Sanctuary, Dutch Bay, Kudawa Beach</td>
+                                <td>February 23, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="20">Edit</button>
+                                    <button class="delete-btn" data-id="20">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>Badulla District</td>
+                                <td>Ravana Falls, Dhowa Temple, Ella Rock, Horton Plains National Park</td>
+                                <td>March 1, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="21">Edit</button>
+                                    <button class="delete-btn" data-id="21">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>Monaragala District</td>
+                                <td>Kataragama Temple, Yala National Park, Tissamaharama</td>
+                                <td>February 16, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="22">Edit</button>
+                                    <button class="delete-btn" data-id="22">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- Destination Form Modal -->
+                <div id="destination-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h2 id="destination-form-title">Add New Destination</h2>
+                        <form id="destination-form">
+                            <input type="hidden" id="destination-id">
+                            <div class="form-group">
+                                <label for="district-name">District Name:</label>
+                                <input type="text" id="district-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="attractions">Main Attractions (comma separated):</label>
+                                <textarea id="attractions" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="wildlife">Wildlife:</label>
+                                <textarea id="wildlife"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="activities">Adventure Activities:</label>
+                                <textarea id="activities"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="destination-image">District Map Image:</label>
+                                <input type="file" id="destination-image">
+                                <div id="current-image" class="hidden">
+                                    <p>Current image: <span id="image-name"></span></p>
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="save-btn">Save</button>
+                                <button type="button" class="cancel-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Food & Recipes Section -->
+            <section id="food" class="content-section">
+                <div class="section-header">
+                    <h1>Manage Food & Recipes</h1>
+                    <button class="add-new-btn" id="add-recipe-btn">+ Add New Recipe</button>
+                </div>
+                
+                <div class="recipe-list">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Dish Name</th>
+                                <th>Category</th>
+                                <th>Price Range</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <!-- Main Dishes -->
+                            <tr>
+                                <td>1</td>
+                                <td>Kiribath (Milk rice)</td>
+                                <td>Main Dishes</td>
+                                <td>LKR 150-200 ($0.45-$0.60)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="1">Edit</button>
+                                    <button class="delete-btn" data-id="1">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Rice and Curry</td>
+                                <td>Main Dishes</td>
+                                <td>LKR 400-600 ($1.25-$1.85)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="2">Edit</button>
+                                    <button class="delete-btn" data-id="2">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Pittu (Steamed coconut rice cakes)</td>
+                                <td>Main Dishes</td>
+                                <td>LKR 100-150 ($0.30-$0.45)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="3">Edit</button>
+                                    <button class="delete-btn" data-id="3">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Kottu roti</td>
+                                <td>Main Dishes</td>
+                                <td>LKR 500-800 ($1.55-$2.50)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="4">Edit</button>
+                                    <button class="delete-btn" data-id="4">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Pol sambol and lunu miris with Roti</td>
+                                <td>Main Dishes</td>
+                                <td>LKR 200-300 ($0.60-$0.95)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="5">Edit</button>
+                                    <button class="delete-btn" data-id="5">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Hoppers (Appa)</td>
+                                <td>Main Dishes</td>
+                                <td>LKR 60-100 per piece ($0.20-$0.30)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="6">Edit</button>
+                                    <button class="delete-btn" data-id="6">Delete</button>
+                                </td>
+                            </tr>
+
+                            <!-- Desserts -->
+                            <tr>
+                                <td>7</td>
+                                <td>Watalappan</td>
+                                <td>Desserts</td>
+                                <td>LKR 200-300 ($0.60-$0.95)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="7">Edit</button>
+                                    <button class="delete-btn" data-id="7">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Kiri peni (Curd and Treacle)</td>
+                                <td>Desserts</td>
+                                <td>LKR 150-250 ($0.45-$0.75)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="8">Edit</button>
+                                    <button class="delete-btn" data-id="8">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Kavum</td>
+                                <td>Desserts</td>
+                                <td>LKR 50-70 per piece ($0.15-$0.20)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="9">Edit</button>
+                                    <button class="delete-btn" data-id="9">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Aluwa (Semolina sweet)</td>
+                                <td>Desserts</td>
+                                <td>LKR 100-150 ($0.30-$0.45)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="10">Edit</button>
+                                    <button class="delete-btn" data-id="10">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Kokis</td>
+                                <td>Desserts</td>
+                                <td>LKR 40-60 per piece ($0.12-$0.18)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="11">Edit</button>
+                                    <button class="delete-btn" data-id="11">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Kalu Dodol</td>
+                                <td>Desserts</td>
+                                <td>LKR 100-150 per piece ($0.30-$0.45)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="12">Edit</button>
+                                    <button class="delete-btn" data-id="12">Delete</button>
+                                </td>
+                            </tr>
+
+                            <!-- Beverages -->
+                            <tr>
+                                <td>13</td>
+                                <td>Ceylon Tea</td>
+                                <td>Beverages</td>
+                                <td>LKR 50-100 ($0.15-$0.30)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="13">Edit</button>
+                                    <button class="delete-btn" data-id="13">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Kola kenda (Herbal porridge)</td>
+                                <td>Beverages</td>
+                                <td>LKR 100-150 ($0.30-$0.45)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="14">Edit</button>
+                                    <button class="delete-btn" data-id="14">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>King coconut water (Thambili)</td>
+                                <td>Beverages</td>
+                                <td>LKR 100-150 ($0.30-$0.45)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="15">Edit</button>
+                                    <button class="delete-btn" data-id="15">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Belimal tea (Herbal drink)</td>
+                                <td>Beverages</td>
+                                <td>LKR 80-120 ($0.25-$0.37)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="16">Edit</button>
+                                    <button class="delete-btn" data-id="16">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Iramusu drink (Sarsaparilla tea)</td>
+                                <td>Beverages</td>
+                                <td>LKR 120-180 ($0.37-$0.56)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="17">Edit</button>
+                                    <button class="delete-btn" data-id="17">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Coriander water (Koththamalli)</td>
+                                <td>Beverages</td>
+                                <td>LKR 80-120 ($0.25-$0.37)</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="18">Edit</button>
+                                    <button class="delete-btn" data-id="18">Delete</button>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recipe Form Modal -->
+                <div id="recipe-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h2 id="recipe-form-title">Add New Recipe</h2>
+                        <form id="recipe-form">
+                            <input type="hidden" id="recipe-id">
+                            <div class="form-group">
+                                <label for="dish-name">Dish Name:</label>
+                                <input type="text" id="dish-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category:</label>
+                                <select id="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Main Dishes">Main Dishes</option>
+                                    <option value="Side Dishes">Side Dishes</option>
+                                    <option value="Desserts">Desserts</option>
+                                    <option value="Beverages">Beverages</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ingredients">Ingredients (one per line):</label>
+                                <textarea id="ingredients" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="price-range">Price Range:</label>
+                                <input type="text" id="price-range" placeholder="e.g. LKR 150-200 ($0.45-$0.60)">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipe-image">Dish Image:</label>
+                                <input type="file" id="recipe-image">
+                                <div id="current-recipe-image" class="hidden">
+                                    <p>Current image: <span id="recipe-image-name"></span></p>
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="save-btn">Save</button>
+                                <button type="button" class="cancel-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guidelines Section -->
+            <section id="guidelines" class="content-section">
+                <div class="section-header">
+                    <h1>Manage Guidelines</h1>
+                    <button class="add-new-btn" id="add-guideline-btn">+ Add New Guideline</button>
+                </div>
+                
+                <div class="guideline-list">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category</th>
+                                <th>Title</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Religious Practices</td>
+                                <td>Temple Dress Code</td>
+                                <td>February 20, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="1">Edit</button>
+                                    <button class="delete-btn" data-id="1">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Religious Practices</td>
+                                <td>Temple Behavior</td>
+                                <td>February 20, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="2">Edit</button>
+                                    <button class="delete-btn" data-id="2">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Wildlife Safety</td>
+                                <td>Elephant Encounters</td>
+                                <td>January 15, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="3">Edit</button>
+                                    <button class="delete-btn" data-id="3">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Wildlife Safety</td>
+                                <td>Safari Guidelines</td>
+                                <td>January 15, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="4">Edit</button>
+                                    <button class="delete-btn" data-id="4">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Dining Etiquette</td>
+                                <td>Traditional Eating</td>
+                                <td>March 1, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="5">Edit</button>
+                                    <button class="delete-btn" data-id="5">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Dining Etiquette</td>
+                                <td>Dining Customs</td>
+                                <td>March 1, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="6">Edit</button>
+                                    <button class="delete-btn" data-id="6">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Local Customs</td>
+                                <td>Greetings</td>
+                                <td>February 5, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="7">Edit</button>
+                                    <button class="delete-btn" data-id="7">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Local Customs</td>
+                                <td>Public Behavior</td>
+                                <td>February 5, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="8">Edit</button>
+                                    <button class="delete-btn" data-id="8">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Visa and Travel Tips</td>
+                                <td>Visa Requirements</td>
+                                <td>January 30, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="9">Edit</button>
+                                    <button class="delete-btn" data-id="9">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Visa and Travel Tips</td>
+                                <td>Budget Travel Tips</td>
+                                <td>January 30, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="10">Edit</button>
+                                    <button class="delete-btn" data-id="10">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Guideline Form Modal -->
+                <div id="guideline-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h2 id="guideline-form-title">Add New Guideline</h2>
+                        <form id="guideline-form">
+                            <input type="hidden" id="guideline-id">
+                            <div class="form-group">
+                                <label for="guideline-category">Category:</label>
+                                <select id="guideline-category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Religious Practices">Religious Practices</option>
+                                    <option value="Wildlife Safety">Wildlife Safety</option>
+                                    <option value="Dining Etiquette">Dining Etiquette</option>
+                                    <option value="Local Customs">Local Customs</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="guideline-title">Title:</label>
+                                <input type="text" id="guideline-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guideline-points">Guidelines (one per line):</label>
+                                <textarea id="guideline-points" required rows="10"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="guideline-image">Image:</label>
+                                <input type="file" id="guideline-image">
+                                <div id="current-guideline-image" class="hidden">
+                                    <p>Current image: <span id="guideline-image-name"></span></p>
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="save-btn">Save</button>
+                                <button type="button" class="cancel-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Road Signs Section -->
+            <section id="road-signs" class="content-section">
+                <div class="section-header">
+                    <h1>Manage Road Signs</h1>
+                    <button class="add-new-btn" id="add-road-sign-btn">+ Add New Road Sign</button>
+                </div>
+                
+                <div class="road-sign-list">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Sign Type</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Directional informative signs</td>
+                                <td>Exit</td>
+                                <td>Indicates that Exit from a national highway.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="1">Edit</button>
+                                    <button class="delete-btn" data-id="1">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Directional informative signs</td>
+                                <td>Arriving into an area</td>
+                                <td>Beginning of an administrative area.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="2">Edit</button>
+                                    <button class="delete-btn" data-id="2">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Directional informative signs</td>
+                                <td>Confirming distances</td>
+                                <td>Show distances to another city.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="3">Edit</button>
+                                    <button class="delete-btn" data-id="3">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Directional informative signs</td>
+                                <td>Direction</td>
+                                <td>Show direction to a specific area.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="4">Edit</button>
+                                    <button class="delete-btn" data-id="4">Delete</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Road markings -->
+                            <tr>
+                                <td>5</td>
+                                <td>Road markings</td>
+                                <td>Overtaking line</td>
+                                <td>Drivers can overtake</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="5">Edit</button>
+                                    <button class="delete-btn" data-id="5">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Road markings</td>
+                                <td>Warningline</td>
+                                <td>Do not overtake while driving on this lane</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="6">Edit</button>
+                                    <button class="delete-btn" data-id="6">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Road markings</td>
+                                <td>Pedestrian crossing</td>
+                                <td>Pedestrians are crossing from this lane. Be careful</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="7">Edit</button>
+                                    <button class="delete-btn" data-id="7">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Road markings</td>
+                                <td>Cycle crossing</td>
+                                <td>Cycles are crossing from this lane. Be careful</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="8">Edit</button>
+                                    <button class="delete-btn" data-id="8">Delete</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Useful for Signs for drivers -->
+                            <tr>
+                                <td>9</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Pedestrian crossing</td>
+                                <td>Indicates a designated pedestrian crossing area.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="9">Edit</button>
+                                    <button class="delete-btn" data-id="9">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>One-Way street</td>
+                                <td>Indicates traffic is allowed in one direction only.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="10">Edit</button>
+                                    <button class="delete-btn" data-id="10">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Cul-de-Sac</td>
+                                <td>Indicates a dead-end street with no through traffic.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="11">Edit</button>
+                                    <button class="delete-btn" data-id="11">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Parking</td>
+                                <td>Indicates a designated parking area.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="12">Edit</button>
+                                    <button class="delete-btn" data-id="12">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Telephone</td>
+                                <td>Indicates the location of a public telephone.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="13">Edit</button>
+                                    <button class="delete-btn" data-id="13">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Emergency telephone</td>
+                                <td>Indicates the location of an emergency telephone.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="14">Edit</button>
+                                    <button class="delete-btn" data-id="14">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Petrol station</td>
+                                <td>Indicates the location of a petrol station.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="15">Edit</button>
+                                    <button class="delete-btn" data-id="15">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Restaurant</td>
+                                <td>Indicates the location of a restaurant.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="16">Edit</button>
+                                    <button class="delete-btn" data-id="16">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Caravan site</td>
+                                <td>Indicates the location of a caravan site.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="17">Edit</button>
+                                    <button class="delete-btn" data-id="17">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Youth hostel</td>
+                                <td>Indicates the location of a youth hostel.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="18">Edit</button>
+                                    <button class="delete-btn" data-id="18">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Swimming pool</td>
+                                <td>Indicates the location of a swimming pool.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="19">Edit</button>
+                                    <button class="delete-btn" data-id="19">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>First aid</td>
+                                <td>Indicates the location of first aid facilities.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="20">Edit</button>
+                                    <button class="delete-btn" data-id="20">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Hospital</td>
+                                <td>Indicates the location of a hospital.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="21">Edit</button>
+                                    <button class="delete-btn" data-id="21">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>Living street</td>
+                                <td>Indicates an area for pedestrians and cyclists.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="22">Edit</button>
+                                    <button class="delete-btn" data-id="22">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>Useful for Signs for drivers</td>
+                                <td>End of living street</td>
+                                <td>Indicates the end of a living street area.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="23">Edit</button>
+                                    <button class="delete-btn" data-id="23">Delete</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Warning signs -->
+                            <tr>
+                                <td>24</td>
+                                <td>Warning signs</td>
+                                <td>Curve to left</td>
+                                <td>Indicates a left curve in the road ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="24">Edit</button>
+                                    <button class="delete-btn" data-id="24">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>Warning signs</td>
+                                <td>Curve to right</td>
+                                <td>Indicates a right curve in the road ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="25">Edit</button>
+                                    <button class="delete-btn" data-id="25">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>Warning signs</td>
+                                <td>Steep descent</td>
+                                <td>Indicates steep road ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="26">Edit</button>
+                                    <button class="delete-btn" data-id="26">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>Warning signs</td>
+                                <td>Double curve</td>
+                                <td>Indicates a double curve in the road ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="27">Edit</button>
+                                    <button class="delete-btn" data-id="27">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>Warning signs</td>
+                                <td>Intersection</td>
+                                <td>Indicates that Intersection with a secondary road.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="28">Edit</button>
+                                    <button class="delete-btn" data-id="28">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td>Warning signs</td>
+                                <td>Intersection</td>
+                                <td>Indicates that Intersection with a side road at right angles.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="29">Edit</button>
+                                    <button class="delete-btn" data-id="29">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>Warning signs</td>
+                                <td>Joining a side road</td>
+                                <td>Indicates that Joining a side road at right angles to the left.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="30">Edit</button>
+                                    <button class="delete-btn" data-id="30">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>31</td>
+                                <td>Warning signs</td>
+                                <td>Joining a side road</td>
+                                <td>Indicates that Joining a side road at right angles to the right.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="31">Edit</button>
+                                    <button class="delete-btn" data-id="31">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>32</td>
+                                <td>Warning signs</td>
+                                <td>Road narrows</td>
+                                <td>Indicates that the road is becoming narrower ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="32">Edit</button>
+                                    <button class="delete-btn" data-id="32">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>33</td>
+                                <td>Warning signs</td>
+                                <td>Fog</td>
+                                <td>Indicates fog conditions ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="33">Edit</button>
+                                    <button class="delete-btn" data-id="33">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>34</td>
+                                <td>Warning signs</td>
+                                <td>Quayside or riverbank</td>
+                                <td>Indicates that Quayside or Riverbank ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="34">Edit</button>
+                                    <button class="delete-btn" data-id="34">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>35</td>
+                                <td>Warning signs</td>
+                                <td>Slippery when wet</td>
+                                <td>Indicates that the road surface may be slippery when wet.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="35">Edit</button>
+                                    <button class="delete-btn" data-id="35">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>36</td>
+                                <td>Warning signs</td>
+                                <td>Falling rocks</td>
+                                <td>Indicates the possibility of falling rocks on the road ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="36">Edit</button>
+                                    <button class="delete-btn" data-id="36">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>37</td>
+                                <td>Warning signs</td>
+                                <td>Pedestrian crossing</td>
+                                <td>Indicates a pedestrian crossing area. Slow down and be ready to stop.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="37">Edit</button>
+                                    <button class="delete-btn" data-id="37">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>38</td>
+                                <td>Warning signs</td>
+                                <td>Children crossing</td>
+                                <td>Indicates a Children Crossing area. Slow down and be ready to stop.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="38">Edit</button>
+                                    <button class="delete-btn" data-id="38">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>39</td>
+                                <td>Warning signs</td>
+                                <td>Animal crossing</td>
+                                <td>Indicates a possible animal crossing area. Be cautious.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="39">Edit</button>
+                                    <button class="delete-btn" data-id="39">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>40</td>
+                                <td>Warning signs</td>
+                                <td>Wild animals</td>
+                                <td>Indicates that wild animals may be present, so drivers should be alert.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="40">Edit</button>
+                                    <button class="delete-btn" data-id="40">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>41</td>
+                                <td>Warning signs</td>
+                                <td>Road work ahead</td>
+                                <td>Indicates that road work or construction is ahead, so drivers should exercise caution.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="41">Edit</button>
+                                    <button class="delete-btn" data-id="41">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>42</td>
+                                <td>Warning signs</td>
+                                <td>Give way ahead</td>
+                                <td>Indicates a Give way ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="42">Edit</button>
+                                    <button class="delete-btn" data-id="42">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>43</td>
+                                <td>Warning signs</td>
+                                <td>Two-way traffic</td>
+                                <td>Indicates a Two-way traffic ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="43">Edit</button>
+                                    <button class="delete-btn" data-id="43">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>44</td>
+                                <td>Warning signs</td>
+                                <td>Roundabout</td>
+                                <td>Indicates a Roundabout ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="44">Edit</button>
+                                    <button class="delete-btn" data-id="44">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>45</td>
+                                <td>Warning signs</td>
+                                <td>Level crossing with barriers</td>
+                                <td>Indicates that a Level crossing with barriers ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="45">Edit</button>
+                                    <button class="delete-btn" data-id="45">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>46</td>
+                                <td>Warning signs</td>
+                                <td>Level crossing</td>
+                                <td>Indicates that Level crossing without barriers ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="46">Edit</button>
+                                    <button class="delete-btn" data-id="46">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>47</td>
+                                <td>Warning signs</td>
+                                <td>Bump</td>
+                                <td>Indicates a bump or hump in the road ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="47">Edit</button>
+                                    <button class="delete-btn" data-id="47">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>48</td>
+                                <td>Warning signs</td>
+                                <td>Dip</td>
+                                <td>Indicates a dip or depression in the road ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="48">Edit</button>
+                                    <button class="delete-btn" data-id="48">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>49</td>
+                                <td>Warning signs</td>
+                                <td>Soft verges</td>
+                                <td>Indicates that Soft verges ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="49">Edit</button>
+                                    <button class="delete-btn" data-id="49">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>50</td>
+                                <td>Warning signs</td>
+                                <td>Traffic light</td>
+                                <td>Indicates that Traffic light ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="50">Edit</button>
+                                    <button class="delete-btn" data-id="50">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>51</td>
+                                <td>Warning signs</td>
+                                <td>Stop sign</td>
+                                <td>Indicates that Stop sign ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="51">Edit</button>
+                                    <button class="delete-btn" data-id="51">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>52</td>
+                                <td>Warning signs</td>
+                                <td>Single track level crossing</td>
+                                <td>Indicates that Single track level crossing.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="52">Edit</button>
+                                    <button class="delete-btn" data-id="52">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>53</td>
+                                <td>Warning signs</td>
+                                <td>Multi-track level crossing</td>
+                                <td>Indicates that Multi-track level crossing.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="53">Edit</button>
+                                    <button class="delete-btn" data-id="53">Delete</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Regulatory signs -->
+                            <tr>
+                                <td>54</td>
+                                <td>Regulatory signs</td>
+                                <td>No entry</td>
+                                <td>Prohibits entry for all vehicles.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="54">Edit</button>
+                                    <button class="delete-btn" data-id="54">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>55</td>
+                                <td>Regulatory signs</td>
+                                <td>All vehicles prohibited</td>
+                                <td>Prohibits entry for all vehicles.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="55">Edit</button>
+                                    <button class="delete-btn" data-id="55">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>56</td>
+                                <td>Regulatory signs</td>
+                                <td>No motor vehicles except motorcycles</td>
+                                <td>Prohibits entry for motor vehicles, except motorcycles.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="56">Edit</button>
+                                    <button class="delete-btn" data-id="56">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>57</td>
+                                <td>Regulatory signs</td>
+                                <td>No trucks</td>
+                                <td>Prohibits entry for trucks.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="57">Edit</button>
+                                    <button class="delete-btn" data-id="57">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>58</td>
+                                <td>Regulatory signs</td>
+                                <td>No trailers</td>
+                                <td>Prohibits entry for trailers.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="58">Edit</button>
+                                    <button class="delete-btn" data-id="58">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>59</td>
+                                <td>Regulatory signs</td>
+                                <td>No tractors</td>
+                                <td>Prohibits entry for tractors.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="59">Edit</button>
+                                    <button class="delete-btn" data-id="59">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>60</td>
+                                <td>Regulatory signs</td>
+                                <td>No motorcycles</td>
+                                <td>Prohibits entry for motorcycles.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="60">Edit</button>
+                                    <button class="delete-btn" data-id="60">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>61</td>
+                                <td>Regulatory signs</td>
+                                <td>No mopeds</td>
+                                <td>Prohibits entry for mopeds.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="61">Edit</button>
+                                    <button class="delete-btn" data-id="61">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>62</td>
+                                <td>Regulatory signs</td>
+                                <td>No Pedestrians</td>
+                                <td>Prohibits entry for pedestrians.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="62">Edit</button>
+                                    <button class="delete-btn" data-id="62">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>63</td>
+                                <td>Regulatory signs</td>
+                                <td>No motor vehicles</td>
+                                <td>Prohibits entry for motor vehicles.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="63">Edit</button>
+                                    <button class="delete-btn" data-id="63">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>64</td>
+                                <td>Regulatory signs</td>
+                                <td>Maximum width 2m</td>
+                                <td>Indicates a maximum width limit of 2 meters.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="64">Edit</button>
+                                    <button class="delete-btn" data-id="64">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>65</td>
+                                <td>Regulatory signs</td>
+                                <td>Maximum height 3.5m</td>
+                                <td>Indicates a maximum height limit of 3.5 meters.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="65">Edit</button>
+                                    <button class="delete-btn" data-id="65">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>66</td>
+                                <td>Regulatory signs</td>
+                                <td>Maximum weight 5t</td>
+                                <td>Indicates a maximum weight limit of 5 tons.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="66">Edit</button>
+                                    <button class="delete-btn" data-id="66">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>67</td>
+                                <td>Regulatory signs</td>
+                                <td>Maximum weight per axle</td>
+                                <td>Indicates a maximum weight limit per axle.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="67">Edit</button>
+                                    <button class="delete-btn" data-id="67">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>68</td>
+                                <td>Regulatory signs</td>
+                                <td>Minimum safe distance</td>
+                                <td>Indicates a minimum safe distance to be maintained.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="68">Edit</button>
+                                    <button class="delete-btn" data-id="68">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>69</td>
+                                <td>Regulatory signs</td>
+                                <td>No left turn</td>
+                                <td>Prohibits left turns.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="69">Edit</button>
+                                    <button class="delete-btn" data-id="69">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>70</td>
+                                <td>Regulatory signs</td>
+                                <td>No right turn</td>
+                                <td>Prohibits right turns.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="70">Edit</button>
+                                    <button class="delete-btn" data-id="70">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>71</td>
+                                <td>Regulatory signs</td>
+                                <td>No U turn</td>
+                                <td>Prohibits U-turns.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="71">Edit</button>
+                                    <button class="delete-btn" data-id="71">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>72</td>
+                                <td>Regulatory signs</td>
+                                <td>No overtaking</td>
+                                <td>Prohibits overtaking.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="72">Edit</button>
+                                    <button class="delete-btn" data-id="72">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>73</td>
+                                <td>Regulatory signs</td>
+                                <td>No overtaking by trucks</td>
+                                <td>Prohibits overtaking by trucks.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="73">Edit</button>
+                                    <button class="delete-btn" data-id="73">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>74</td>
+                                <td>Regulatory signs</td>
+                                <td>No horns</td>
+                                <td>Prohibits the use of horns.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="74">Edit</button>
+                                    <button class="delete-btn" data-id="74">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>75</td>
+                                <td>Regulatory signs</td>
+                                <td>No parking</td>
+                                <td>Prohibits parking.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="75">Edit</button>
+                                    <button class="delete-btn" data-id="75">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>76</td>
+                                <td>Regulatory signs</td>
+                                <td>No parking and stopping</td>
+                                <td>Prohibits parking and stopping.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="76">Edit</button>
+                                    <button class="delete-btn" data-id="76">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>77</td>
+                                <td>Regulatory signs</td>
+                                <td>No parking on odd</td>
+                                <td>Prohibits parking on odd-numbered days.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="77">Edit</button>
+                                    <button class="delete-btn" data-id="77">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>78</td>
+                                <td>Regulatory signs</td>
+                                <td>No parking on even</td>
+                                <td>Prohibits parking on even-numbered days.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="78">Edit</button>
+                                    <button class="delete-btn" data-id="78">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>79</td>
+                                <td>Mandatory signs</td>
+                                <td>Maximum speed</td>
+                                <td>Maximum speed is 50Kmph. Drivers should limit speed.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="79">Edit</button>
+                                    <button class="delete-btn" data-id="79">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>80</td>
+                                <td>Mandatory signs</td>
+                                <td>Proceed straight</td>
+                                <td>Indicates that traffic must proceed straight ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="80">Edit</button>
+                                    <button class="delete-btn" data-id="80">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>81</td>
+                                <td>Mandatory signs</td>
+                                <td>Turn left ahead</td>
+                                <td>Indicates that drivers must turn left ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="81">Edit</button>
+                                    <button class="delete-btn" data-id="81">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>82</td>
+                                <td>Mandatory signs</td>
+                                <td>Turn right ahead</td>
+                                <td>Indicates that drivers must turn right ahead.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="82">Edit</button>
+                                    <button class="delete-btn" data-id="82">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>83</td>
+                                <td>Mandatory signs</td>
+                                <td>Turn left</td>
+                                <td>Indicates that drivers must turn left.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="83">Edit</button>
+                                    <button class="delete-btn" data-id="83">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>84</td>
+                                <td>Mandatory signs</td>
+                                <td>Turn right</td>
+                                <td>Indicates that drivers must turn right.</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="84">Edit</button>
+                                    <button class="delete-btn" data-id="84">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Road Sign Form Modal -->
+                <div id="road-sign-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h2 id="road-sign-form-title">Add New Road Sign</h2>
+                        <form id="road-sign-form">
+                            <input type="hidden" id="road-sign-id">
+                            <div class="form-group">
+                                <label for="sign-type">Sign Type:</label>
+                                <select id="sign-type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="Directional informative signs">Directional informative signs</option>
+                                    <option value="Warning signs">Warning signs</option>
+                                    <option value="Regulatory signs">Regulatory signs</option>
+                                    <option value="Prohibition signs">Prohibition signs</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sign-title">Title:</label>
+                                <input type="text" id="sign-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sign-description">Description:</label>
+                                <textarea id="sign-description" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="sign-image">Sign Image:</label>
+                                <input type="file" id="sign-image">
+                                <div id="current-sign-image" class="hidden">
+                                    <p>Current image: <span id="sign-image-name"></span></p>
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="save-btn">Save</button>
+                                <button type="button" class="cancel-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Events Section -->
+            <section id="events" class="content-section">
+                <div class="section-header">
+                    <h1>Manage Events</h1>
+                    <button class="add-new-btn" id="add-event-btn">+ Add New Event</button>
+                </div>
+                
+                <div class="event-list">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Duruthu Full Moon Poya Day</td>
+                                <td>January 12, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="1">Edit</button>
+                                    <button class="delete-btn" data-id="1">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Tamil Thai Pongal Day</td>
+                                <td>January 13, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="2">Edit</button>
+                                    <button class="delete-btn" data-id="2">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Independence Day</td>
+                                <td>February 03, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="3">Edit</button>
+                                    <button class="delete-btn" data-id="3">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Navam Full Moon Poya Day</td>
+                                <td>February 11, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="4">Edit</button>
+                                    <button class="delete-btn" data-id="4">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Mahasivarathri Day</td>
+                                <td>February 25, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="5">Edit</button>
+                                    <button class="delete-btn" data-id="5">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Medin Full Moon Poya Day</td>
+                                <td>March 12, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="6">Edit</button>
+                                    <button class="delete-btn" data-id="6">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Id-Ul-Fitr (Ramazan Festival Day)</td>
+                                <td>March 30, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="7">Edit</button>
+                                    <button class="delete-btn" data-id="7">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Bak Full Moon Poya Day</td>
+                                <td>April 11, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="8">Edit</button>
+                                    <button class="delete-btn" data-id="8">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Day Prior to Sinhala & Tamil New Year Day</td>
+                                <td>April 12, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="9">Edit</button>
+                                    <button class="delete-btn" data-id="9">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Sinhala & Tamil New Year Day</td>
+                                <td>April 13, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="10">Edit</button>
+                                    <button class="delete-btn" data-id="10">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Special Bank Holiday</td>
+                                <td>April 14, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="11">Edit</button>
+                                    <button class="delete-btn" data-id="11">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Good Friday</td>
+                                <td>April 17, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="12">Edit</button>
+                                    <button class="delete-btn" data-id="12">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>May Day (International Workers' Day)</td>
+                                <td>April 30, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="13">Edit</button>
+                                    <button class="delete-btn" data-id="13">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Vesak Full Moon Poya Day</td>
+                                <td>May 11, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="14">Edit</button>
+                                    <button class="delete-btn" data-id="14">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Day Following Vesak Full Moon Poya Day</td>
+                                <td>May 12, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="15">Edit</button>
+                                    <button class="delete-btn" data-id="15">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Id-Ul-Alha (Hadji Festival Day)</td>
+                                <td>June 06, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="16">Edit</button>
+                                    <button class="delete-btn" data-id="16">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Poson Full Moon Poya Day</td>
+                                <td>June 09, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="17">Edit</button>
+                                    <button class="delete-btn" data-id="17">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Esala Full Moon Poya Day</td>
+                                <td>July 09, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="18">Edit</button>
+                                    <button class="delete-btn" data-id="18">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>1st Kumbal Perahera</td>
+                                <td>July 30, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="19">Edit</button>
+                                    <button class="delete-btn" data-id="19">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>2nd Kumbal Perahera</td>
+                                <td>July 31, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="20">Edit</button>
+                                    <button class="delete-btn" data-id="20">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>3rd Kumbal Perahera</td>
+                                <td>August 01, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="21">Edit</button>
+                                    <button class="delete-btn" data-id="21">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>4th Kumbal Perahera</td>
+                                <td>August 02, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="22">Edit</button>
+                                    <button class="delete-btn" data-id="22">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>5th Kumbal Perahera</td>
+                                <td>August 03, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="23">Edit</button>
+                                    <button class="delete-btn" data-id="23">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>1st Randoli Perahera</td>
+                                <td>August 04, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="24">Edit</button>
+                                    <button class="delete-btn" data-id="24">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>2nd Randoli Perahera</td>
+                                <td>August 05, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="25">Edit</button>
+                                    <button class="delete-btn" data-id="25">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>3rd Randoli Perahera</td>
+                                <td>August 06, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="26">Edit</button>
+                                    <button class="delete-btn" data-id="26">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>4th Randoli Perahera</td>
+                                <td>August 07, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="27">Edit</button>
+                                    <button class="delete-btn" data-id="27">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>Final Randoli Perahera (The Grand Randoli Procession)</td>
+                                <td>August 08, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="28">Edit</button>
+                                    <button class="delete-btn" data-id="28">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td>Diya Kapeema (The Water Cutting Ceremony)</td>
+                                <td>August 09, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="29">Edit</button>
+                                    <button class="delete-btn" data-id="29">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>Dahawal Perahera (The Day Procession)</td>
+                                <td>August 09, 2025</td>
+                                <td>Kandy</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="30">Edit</button>
+                                    <button class="delete-btn" data-id="30">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>31</td>
+                                <td>Nikini Full Moon Poya Day</td>
+                                <td>August 07, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="31">Edit</button>
+                                    <button class="delete-btn" data-id="31">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>32</td>
+                                <td>Milad-Un-Nabi (Holy Prophet's Birthday)</td>
+                                <td>September 04, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="32">Edit</button>
+                                    <button class="delete-btn" data-id="32">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>33</td>
+                                <td>Binara Full Moon Poya Day</td>
+                                <td>September 06, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="33">Edit</button>
+                                    <button class="delete-btn" data-id="33">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>34</td>
+                                <td>Vap Full Moon Poya Day</td>
+                                <td>October 05, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="34">Edit</button>
+                                    <button class="delete-btn" data-id="34">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>35</td>
+                                <td>Deepavali Festival Day</td>
+                                <td>October 19, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="35">Edit</button>
+                                    <button class="delete-btn" data-id="35">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>36</td>
+                                <td>Ill Full Moon Poya Day</td>
+                                <td>November 04, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="36">Edit</button>
+                                    <button class="delete-btn" data-id="36">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>37</td>
+                                <td>Unduvap Full Moon Poya Day</td>
+                                <td>December 03, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="37">Edit</button>
+                                    <button class="delete-btn" data-id="37">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>38</td>
+                                <td>Christmas Day</td>
+                                <td>December 24, 2025</td>
+                                <td>Nationwide</td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="38">Edit</button>
+                                    <button class="delete-btn" data-id="38">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Event Form Modal -->
+                <div id="event-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h2 id="event-form-title">Add New Event</h2>
+                        <form id="event-form">
+                            <input type="hidden" id="event-id">
+                            <div class="form-group">
+                                <label for="event-name">Event Name:</label>
+                                <input type="text" id="event-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-date">Event Date:</label>
+                                <input type="date" id="event-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-end-date">End Date (if multi-day):</label>
+                                <input type="date" id="event-end-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="event-location">Location:</label>
+                                <input type="text" id="event-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-description">Description:</label>
+                                <textarea id="event-description" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-image">Event Image:</label>
+                                <input type="file" id="event-image">
+                                <div id="current-event-image" class="hidden">
+                                    <p>Current image: <span id="event-image-name"></span></p>
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="save-btn">Save</button>
+                                <button type="button" class="cancel-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="admin2.js"></script>
+</body>
+</html>

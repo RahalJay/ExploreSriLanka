@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Sri Lanka - Registration</title>
+  <link rel="stylesheet" href="Registration.css">
+  <!-- Remove the form tag from here -->
+</head>
+<body>
+  <div class="container">
+    <main>
+      <div class="registration-form">
+        <h2>Registration Form</h2>
+        <!-- Add action and method here -->
+        <form id="registrationForm" action="Register.php" method="POST">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Choose a username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Choose a password" required>
+          </div>
+          <div class="form-buttons">
+            <button type="button" class="btn btn-cancel">Cancel</button>
+            <button type="submit" class="btn">Register</button>
+          </div>
+        </form>
+        <p class="login-link">Already have an account? <a href="Login.html">Login</a></p>
+      </div>
+    </main>
+  </div>
+  <script src="Reg.js"></script>
+</body>
+</html>

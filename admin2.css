@@ -1,0 +1,419 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f6fa;
+    color: #333;
+}
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #1A5276;
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo img {
+    max-width: 80px;
+    margin-bottom: 10px;
+}
+
+.logo h2 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+nav ul li {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li .icon {
+    margin-right: 10px;
+}
+
+nav ul li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav ul li.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left: 4px solid #ffcc00;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px 0 0 4px;
+    width: 300px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background-color: #1A5276;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+}
+
+.notification {
+    margin-right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Content Sections */
+.content-section {
+    display: none;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content-section.active {
+    display: block;
+}
+
+.content-section h1 {
+    margin-bottom: 20px;
+    color: #1A5276;
+}
+
+/* Dashboard Stats */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #1A5276;
+}
+
+.stat-card h3 {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #006666;
+    margin-bottom: 5px;
+}
+
+.stat-info {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Tables */
+.recent-activity, .destination-list, .recipe-list, .guideline-list, .road-sign-list, .event-list {
+    margin-top: 20px;
+}
+
+.recent-activity h2 {
+    margin-bottom: 15px;
+    color: #1A5276;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+}
+
+table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.data-table .actions {
+    white-space: nowrap;
+}
+
+.edit-btn, .delete-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-new-btn {
+    padding: 8px 16px;
+    background-color: #1A5276;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 50px auto;
+    padding: 20px;
+    width: 600px;
+    max-width: 90%;
+    border-radius: 8px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    color: #006666;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.save-btn, .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.save-btn {
+    background-color: #006666;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #ddd;
+    color: #333;
+}
+
+/* Utilities */
+.hidden {
+    display: none;
+}
+
+/* Sri Lankan-inspired color accents */
+.stat-card:nth-child(1) {
+    border-left-color: #006666; /* Teal - representing ocean */
+}
+
+.stat-card:nth-child(2) {
+    border-left-color: #ffcc00; /* Golden - representing Buddhism */
+}
+
+.stat-card:nth-child(3) {
+    border-left-color: #cc3333; /* Red - from flag */
+}
+
+.stat-card:nth-child(4) {
+    border-left-color: #339933; /* Green - representing lush landscape */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        overflow: visible;
+    }
+    
+    .sidebar .logo h2,
+    .sidebar nav ul li span:not(.icon) {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 70px;
+    }
+    
+    .search-bar input {
+        width: 180px;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .add-new-btn {
+        margin-top: 10px;
+    }
+    
+    .search-bar {
+        margin-bottom: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .admin-profile {
+        margin-top: 15px;
+    }
+}

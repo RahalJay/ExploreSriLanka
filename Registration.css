@@ -1,0 +1,181 @@
+:root {
+  --primary-color: linear-gradient(45deg, #3375FF, #33BDFF);
+  --secondary-color: linear-gradient(45deg, #1A5276, #154360);
+  --accent-color: linear-gradient(45deg, #3375FF, #33BDFF);
+  --text-color: #2C3E50;
+  --background-color: linear-gradient(120deg, #eeeef3, #FDFEFE);
+  --light-grey: #F8F9FA;
+  --dark-grey: linear-gradient(45deg, #1A5276, #154360);
+  --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.8;
+  color: var(--text-color);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('Tiger.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.registration-form {
+  background: var(--white);
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid;
+  border-image: linear-gradient(45deg, #3375FF, #33BDFF) 1;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  background: var(--primary-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--light-grey);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+input:focus {
+  outline: none;
+  border-image: linear-gradient(45deg, #3375FF, #33BDFF) 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.btn[type="submit"] {
+  background: var(--secondary-color);
+  color: var(--white);
+}
+
+.btn[type="submit"]:hover {
+  background: var(--accent-color);
+  transform: translateY(-5px);
+}
+
+.btn-cancel {
+  background: var(--light-grey);
+  color: var(--text-color);
+}
+
+.btn-cancel:hover {
+  background: var(--dark-grey);
+  color: var(--white);
+  transform: translateY(-5px);
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1rem;
+}
+
+.login-link a {
+  text-decoration: none;
+  background: var(--primary-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.login-link a:hover {
+  background: var(--secondary-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .registration-form {
+      padding: 30px 20px;
+  }
+
+  .form-buttons {
+      flex-direction: column;
+  }
+
+  .btn {
+      width: 100%;
+      font-size: 1rem;
+  }
+
+  h2 {
+      font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+      padding: 10px;
+  }
+
+  .registration-form {
+      padding: 20px 15px;
+  }
+
+  h2 {
+      font-size: 1.5rem;
+  }
+
+  .form-group {
+      margin-bottom: 20px;
+  }
+}

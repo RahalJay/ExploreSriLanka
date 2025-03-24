@@ -1,0 +1,268 @@
+:root {
+    --primary-color: linear-gradient(45deg, #3375FF, #33BDFF); /* Tropical sunset orange to yellow */
+    --secondary-color: linear-gradient(45deg, #1A5276, #154360); /* Vibrant green to aqua */
+    --accent-color: linear-gradient(45deg, #3375FF, #33BDFF); /* Ocean blue to sky blue */
+    --text-color: #2C3E50;
+    --background-color: linear-gradient(120deg, #eeeef3, #FDFEFE); /* Bright white */
+    --light-grey: #F8F9FA;
+    --dark-grey: linear-gradient(45deg, #1A5276, #154360); /* Deep ocean blue */
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    color: var(--text-color);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('Back.png') no-repeat center center fixed;
+    background-size: cover;
+    --text-color: #333; /* Update text color if needed */
+    --background-color: #f0f0f0; /* Fallback background color */
+}
+
+/* Adjust text readability on the background */
+.content {
+    background-color: rgba(255, 255, 255, 0.8); /* Add semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.website-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+header {
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+nav .logo-img {
+    max-height: 100px;
+    transition: transform 0.3s;
+}
+
+nav .logo-img:hover {
+    transform: scale(1.1);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    font-weight: 800;  /* Makes text bold */
+    font-size: 1.1rem;  /* Increases font size */
+}
+
+nav ul li a {
+    text-decoration: none;
+    background: var(--primary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background 0.3s;
+}
+
+
+nav ul li a:hover {
+    background: var(--secondary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#register-btn {
+    background: var(--secondary-color);
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+    color: var(--white);  /* Ensures text color is white */
+    text-align: center;
+    text-decoration: none;  /* Removes default link underline */
+    font-weight: 600;
+    display: inline-block;
+}
+
+#register-btn:hover {
+    background: var(--accent-color); 
+    transform: translateY(-3px);
+    border-color: var(--white);
+    color: var(--white);  /* Ensures text remains white on hover */
+}
+
+h4 {
+    color: white;
+}
+.hero-section {
+    height: 90vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('Flag.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: var(--accent-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FFFFFF;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+
+.hero-content .btn-primary {
+    background: var(--secondary-color);
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+    color: var(--white);
+}
+
+.hero-content .btn-primary:hover {
+    background: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.section-content {
+    padding: 60px 0;
+    text-align: center;
+    background: var(--light-grey);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    background: var(--primary-color);
+    -webkit-background-clip: text;
+}
+
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.about-images img {
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-images img:hover {
+    transform: scale(1.05);
+}
+
+.tourism-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    
+}
+
+.card {
+    border: 3px solid; /* Add a border */
+    border-image: linear-gradient(45deg, #3375FF, #33BDFF) 1; /* Use tropical gradient colors */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--background-color);
+}
+
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+footer {
+    background: var(--dark-grey);
+    color: var(--white);
+    padding: 40px 15px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.footer-content a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-content a:hover {
+    background: var(--secondary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .about-grid, 
+    .tourism-highlights, 
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
